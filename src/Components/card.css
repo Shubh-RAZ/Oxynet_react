@@ -1,0 +1,196 @@
+
+.card-start{
+    padding-left: 45px;
+    padding-right: 45px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    
+}
+
+.cards{
+    height: 57vh;
+    padding-right: 20px;
+}
+
+.card-inside{
+    height: 90%;
+    background: #FFFFFF;
+box-shadow: 0px 4px 21px rgba(0, 0, 0, 0.13);
+padding-bottom: 20px;
+padding-top: 20px;
+padding-left: 20px;
+padding-right: 20px;
+}
+
+.card-name{
+    color: #6F50FF;
+    font-size: 29px;
+    font-weight: 600;
+}
+
+.card-add{
+    justify-content: center;
+    color: #565656;
+    border: 1px solid #CDCDCD;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style:none;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin:auto;
+}
+
+.card-avail{
+    background: #6F50FF;
+    width: fit-content;
+    margin: auto;
+    padding-left: 45px;
+    padding-right: 45px;
+    font-size: 24px;
+    padding-bottom: 10px;
+}
+
+.avail{
+    color: #FFFFFF;
+
+}
+
+.av{
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.rate{
+    font-size: 19px;
+    margin-top: 15px;
+    color: #343434;
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border: 1px solid #CDCDCD;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style:none;
+
+}
+
+.phone-svg{
+    margin-right: 15px;
+    width: 25px;
+    height: 25px;
+    background: #6F50FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.phone{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5px;
+    border: 1px solid #CDCDCD;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style:none;
+}
+
+.service{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.service-quote{
+    margin-right: 15px;
+    color: #888888;
+
+}
+
+.report-btn{
+    background: #FF505C;
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    
+
+}
+
+@media(max-width:960px){
+    .cards{
+        height: 63vh;
+    }
+}
+
+@media(max-width:840px){
+    .cards{
+        height: 63vh;
+    }
+
+    .avail{
+        font-size: 20px;
+    }
+}
+@media(max-width:417px){
+
+    .card-name{
+        font-size: 25px;
+    }
+
+    .card-start{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .cards{
+        height: 62vh;
+    }
+
+    .card-avail{
+        font-size: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 10px;
+    }
+
+    .phone{
+        font-size: 12px;
+    }
+}
+
+@media(max-width:335px){
+
+    .card-name{
+        font-size: 25px;
+    }
+
+    .card-start{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .cards{
+        height: 67vh;
+    }
+
+    .card-avail{
+        font-size: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 10px;
+    }
+
+    .phone{
+        font-size: 12px;
+    }
+
+    .service{
+        font-size: 12px;
+    }
+
+    .report-btn{
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+}

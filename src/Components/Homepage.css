@@ -1,0 +1,256 @@
+@import url(//db.onlinewebfonts.com/c/7e96eba370659b4e4563309dc4ebb33f?family=Samarkan);
+@font-face {font-family: "Samarkan"; src: url("//db.onlinewebfonts.com/t/7e96eba370659b4e4563309dc4ebb33f.eot"); src: url("//db.onlinewebfonts.com/t/7e96eba370659b4e4563309dc4ebb33f.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/7e96eba370659b4e4563309dc4ebb33f.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/7e96eba370659b4e4563309dc4ebb33f.woff") format("woff"), url("//db.onlinewebfonts.com/t/7e96eba370659b4e4563309dc4ebb33f.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/7e96eba370659b4e4563309dc4ebb33f.svg#Samarkan") format("svg"); }
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+
+
+.name{
+font-family: "samarkan";
+text-align: center;
+font-size: 3em;
+background: white;
+background-clip: text;
+-webkit-text-fill-color: transparent;
+text-align: left;
+letter-spacing: 10px;
+}
+
+.top-ribbon{
+    padding-left: 15px;
+    padding-right: 15px;
+    background: #6F50FF;
+height: 10vh;
+display: flex;
+align-items: center;
+}
+
+.select{
+    outline: none;
+    border-style: none;
+    height: 5vh;
+  
+}
+
+.state{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-left: 100px;
+    width: fit-content;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.svg{
+    margin-right: 30px;
+}
+
+.homepage-whole{
+    width: 100vw;
+    overflow: hidden;
+}
+
+.state-city{
+    display: flex;
+}
+
+.supplier{
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+    padding-top: 25px;
+}
+
+.supplier-heading{
+    height: fit-content;
+    color: #6F50FF;
+    border: 1px solid #6F50FF;
+    width: fit-content;
+    padding-left: 45px;
+    padding-right: 45px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+}
+
+.supplier-info{
+    position: absolute;
+    right:25px;
+    display: flex;
+}
+
+.supplier-quote{
+    color: #4362FD;
+    margin-right: 20px;
+
+}
+
+.click-here-btn{
+    color: white;
+    background: #4362FD;
+    border-radius: 48px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+}
+
+@media(max-width:1060px){
+    .state-city{
+        padding-left: 0;
+    }
+
+    .state{
+        margin-left: 50px;
+    }
+}
+
+@media(max-width:956px){
+    .state-city{
+        padding-left: 0;
+        margin-left: 10px;
+    }
+
+    .state{
+        margin-left: 0px;
+    }
+    
+    .city{
+        margin-left: 50px;
+
+    }
+}
+
+
+@media(max-width:906px){
+    .state-city{
+        padding-left: 0;
+        margin-left: 20px;
+    }
+
+    .select{
+        font-size: 12px;
+    }
+
+    .state{
+        margin-left: 0px;
+    }
+    
+    .city{
+        margin-left: 50px;
+
+    }
+}
+
+@media(max-width:818px){
+    .state-city{
+        padding-left: 0;
+        margin-left: 10px;
+        
+    }
+
+    .top-ribbon{
+        display: grid;
+        height: 25vh;
+    }
+
+    .select{
+        font-size: 12px;
+    }
+
+    .state{
+        margin-left: 0px;
+    }
+    
+    .city{
+        margin-left: 50px;
+
+    }
+}
+
+@media(max-width:608px){
+
+    .name{
+        justify-content: center;
+        display: grid;
+    }
+
+    .supplier{
+        position: fixed;
+        bottom: 0;
+        z-index: 1000;
+        width: 100%;
+        background: #6F50FF;
+        display: grid;
+        justify-content: center;
+        height: 10vh;
+        align-items: center;
+    }
+
+    .supplier-info{
+        display: flex;
+        justify-content: center;
+        position: relative;
+        margin-left: 0;
+        margin-right: 0;
+        bottom: 10px;
+    }
+
+    .supplier-heading{
+        display: none;
+    }
+
+    .supplier-quote{
+        color:white;
+    }
+    .state-city{
+        padding-left: 0;
+        margin-left: 10px;
+        display: grid;
+        justify-content: center;
+        
+    }
+
+    .top-ribbon{
+        display: grid;
+        height: 30vh;
+        justify-content: center;
+    }
+
+    .select{
+        font-size: 15px;
+
+    }
+
+    .city{
+        margin-top: 15px;
+    }
+
+    .state{
+        margin-left: 0px;
+    }
+    
+   
+}
+
+@media(max-width:354px){
+    .top-ribbon{
+        padding-left: 15px;
+    padding-right: 15px;
+    }
+
+    .select{
+        font-size: 12px;
+    }
+
+    .supplier-info{
+        display: flex;
+        justify-content: center;
+        position: relative;
+        margin-left: 0;
+        margin-right: 0;
+        bottom: 10px;
+        font-size: 14px;
+    }
+}
