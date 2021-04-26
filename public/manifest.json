@@ -1,22 +1,27 @@
 {
-  "short_name": "Weather",
-  "name": "Weather: Do I need an umbrella?",
+  "name": "Live covid supplies...",
   "icons": [
     {
       "src": "/logo192.png",
       "type": "image/png",
       "sizes": "192x192"
+    },
+    {
+      "src": "/logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
-  "start_url": "/?source=pwa",
-  "background_color": "#3367D6",
+  "background_color": "#ffffff",
+  "start_url": "/?pwa=true",
+  "short_name": "OXYNET",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#3367D6",
+  "theme_color": "#6F50FF",
   "shortcuts": [
     
   ],
-  "description": "Weather forecast information",
+  "description": "At OXYNET we connect users and oxygen cylinder suppliers directly. Needy people visiting our site will see the updated and real-time availability of oxygen.",
   "screenshots": [
     
   ]

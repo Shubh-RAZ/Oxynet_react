@@ -1,11 +1,13 @@
-import './App.css';
-import Homepage from './Components/Homepage';
+// import './App.css';
+// import Homepage from './Components/Homepage';
 // import About from './Components/about_us/about'
+import ResetPassword from './ResetPassword';
 
 function App() {
   return (
-    <div className="App">
-     <Homepage/>
+    <div >
+     {/* <Homepage/> */}
+     <ResetPassword/>
      {/* <About></About> */}
     </div>
   );
