@@ -1,0 +1,38 @@
+@import url(//db.onlinewebfonts.com/c/7e96eba370659b4e4563309dc4ebb33f?family=Samarkan);
+@font-face {font-family: "Samarkan"; src: url("//db.onlinewebfonts.com/t/7e96eba370659b4e4563309dc4ebb33f.eot"); src: url("//db.onlinewebfonts.com/t/7e96eba370659b4e4563309dc4ebb33f.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/7e96eba370659b4e4563309dc4ebb33f.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/7e96eba370659b4e4563309dc4ebb33f.woff") format("woff"), url("//db.onlinewebfonts.com/t/7e96eba370659b4e4563309dc4ebb33f.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/7e96eba370659b4e4563309dc4ebb33f.svg#Samarkan") format("svg"); }
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+
+.supply_top_whole{
+    display: flex;
+    height: 10vh;
+    background: #6F50FF;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow: hidden;
+}
+
+.supply_name{
+font-family: "samarkan";
+color: white;
+font-weight: 400;
+font-size: 40px;
+letter-spacing: 3px;
+}
+
+.supply_title{
+    color: white;
+    font-size: 29px;
+    letter-spacing: 2px;
+}
+
+.lgt_btn{
+    background:white;
+    color: black;
+    width: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}

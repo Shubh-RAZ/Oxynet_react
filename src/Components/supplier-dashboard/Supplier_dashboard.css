@@ -1,0 +1,37 @@
+.supply_start{
+    margin-top: 50px;
+    padding-left: 20px;
+}
+
+.add-btn{
+    background: #6F50FF;
+    width: 120px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 120px
+
+}
+
+.row-class{
+    display: flex;
+}
+
+.btn-box{
+    height: 57vh;
+    display: grid;
+}
+
+.inside-btn{
+    height: 90%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.cancel-svg{
+    position: absolute;
+    right:25px;
+    top:75px;
+    z-index: 100;
+}
