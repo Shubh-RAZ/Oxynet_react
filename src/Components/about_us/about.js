@@ -13,7 +13,7 @@ export default class About extends Component {
                 <div className="col-md-3 col-sm-6 box">
                   <div className="grd">
                     <div className="grd-img">
-                      <img className="pp" src=".\pp2.jpeg"></img>
+                      <img className="pp" alt="image" src=".\pp2.jpeg"></img>
                     </div>
                     <div className="grd-cont">
                       <div className="txt">
@@ -23,9 +23,9 @@ export default class About extends Component {
                         <p>Back-End</p>
                       </div>
                       <div className="conn">
-                        <i class="fa fa-github cnct" aria-hidden="true"></i>
-                        <i class="fa fa-facebook-square cnct" aria-hidden="true"></i>
-                        <i class="fa fa-instagram cnct" aria-hidden="true"></i>
+                        <i className="fa fa-github cnct" aria-hidden="true"></i>
+                        <i className="fa fa-facebook-square cnct" aria-hidden="true"></i>
+                        <i className="fa fa-instagram cnct" aria-hidden="true"></i>
                       </div>
                     </div>
                   </div>
@@ -33,7 +33,7 @@ export default class About extends Component {
                 <div className="col-md-3 col-sm-6 box">
                 <div className="grd">
                 <div className="grd-img">
-                      <img className="pp" src=".\pp1.jpeg"></img>
+                      <img className="pp" alt="image" src=".\pp1.jpeg"></img>
                     </div>
                     <div className="grd-cont">
                       <div className="txt">
@@ -43,9 +43,9 @@ export default class About extends Component {
                         <p>Back-End</p>
                       </div>
                       <div className="conn">
-                        <i class="fa fa-github cnct" aria-hidden="true"></i>
-                        <i class="fa fa-facebook-square cnct" aria-hidden="true"></i>
-                        <i class="fa fa-instagram cnct" aria-hidden="true"></i>
+                        <i className="fa fa-github cnct" aria-hidden="true"></i>
+                        <i className="fa fa-facebook-square cnct" aria-hidden="true"></i>
+                        <i className="fa fa-instagram cnct" aria-hidden="true"></i>
                       </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@ export default class About extends Component {
                 <div className="col-md-3 col-sm-6 box">
                 <div className="grd">
                 <div className="grd-img">
-                      <img className="pp" src=".\pp3.jpeg"></img>
+                      <img className="pp" alt="image" src=".\pp3.jpeg"></img>
                     </div>
                     <div className="grd-cont">
                       <div className="txt">
@@ -62,9 +62,9 @@ export default class About extends Component {
                         <p>Front-End</p>
                       </div>
                       <div className="conn">
-                        <i class="fa fa-github cnct" aria-hidden="true"></i>
-                        <i class="fa fa-facebook-square cnct" aria-hidden="true"></i>
-                        <i class="fa fa-instagram cnct" aria-hidden="true"></i>
+                        <i className="fa fa-github cnct" aria-hidden="true"></i>
+                        <i className="fa fa-facebook-square cnct" aria-hidden="true"></i>
+                        <i className="fa fa-instagram cnct" aria-hidden="true"></i>
                       </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@ export default class About extends Component {
                 <div className="col-md-3 col-sm-6 box">
                 <div className="grd">
                   <div className="grd-img">
-                      <img className="pp" src=".\pp4.jpeg"></img>
+                      <img className="pp" alt="image" src=".\pp4.jpeg"></img>
                   </div>
                   <div className="grd-cont">
                       <div className="txt">
@@ -81,9 +81,9 @@ export default class About extends Component {
                         <p className="xtr">Front End</p>
                       </div>
                       <div className="conn">
-                        <i class="fa fa-github cnct" aria-hidden="true"></i>
-                        <i class="fa fa-facebook-square cnct" aria-hidden="true"></i>
-                        <i class="fa fa-instagram cnct" aria-hidden="true"></i>
+                        <i className="fa fa-github cnct" aria-hidden="true"></i>
+                        <i className="fa fa-facebook-square cnct" aria-hidden="true"></i>
+                        <i className="fa fa-instagram cnct" aria-hidden="true"></i>
                       </div>
                   </div>
                 </div>
@@ -92,7 +92,7 @@ export default class About extends Component {
                 <div className="col-md-3 col-sm-6 box">
                 <div className="grd">
                   <div className="grd-img">
-                      <img className="pp" src=".\pp5.jpeg"></img>
+                      <img className="pp" alt="image" src=".\pp5.jpeg"></img>
                   </div>
                   <div className="grd-cont">
                       <div className="txt">
@@ -101,9 +101,9 @@ export default class About extends Component {
                         <p className="xtr">Front End</p>
                       </div>
                       <div className="conn">
-                        <i class="fa fa-github cnct" aria-hidden="true"></i>
-                        <i class="fa fa-facebook-square cnct" aria-hidden="true"></i>
-                        <i class="fa fa-instagram cnct" aria-hidden="true"></i>
+                        <i className="fa fa-github cnct" aria-hidden="true"></i>
+                        <i className="fa fa-facebook-square cnct" aria-hidden="true"></i>
+                        <i className="fa fa-instagram cnct" aria-hidden="true"></i>
                       </div>
                   </div>
                 </div>

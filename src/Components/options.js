@@ -6,8 +6,8 @@ export default class Options extends Component {
             
                 
             <React.Fragment>
-                <select name="state" id="state" className="select" placeholder="Select State">
-                        <option value="" disabled selected>Select State</option>
+                <select name="state" id="state" className="select" defaultValue="select" >
+                            <option value="select" disabled >Select State</option>
                             <option value="Andhra Pradesh">Andhra Pradesh</option>
                             <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                             <option value="Arunachal Pradesh">Arunachal Pradesh</option>

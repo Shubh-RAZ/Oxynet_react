@@ -18,9 +18,9 @@ letter-spacing: 10px;
     padding-left: 15px;
     padding-right: 15px;
     background: #6F50FF;
-height: 10vh;
-display: flex;
-align-items: center;
+    height: 10vh;
+    display: flex;
+    align-items: center;
 }
 
 .select{
@@ -231,6 +231,16 @@ align-items: center;
         margin-left: 0px;
     }
     
+    .click-here-btn{
+        color: #4362FD;
+        background: #ffffff;
+        border-radius: 48px;
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    
+    }
    
 }
 
@@ -252,5 +262,16 @@ align-items: center;
         margin-right: 0;
         bottom: 10px;
         font-size: 14px;
+    }
+
+    .click-here-btn{
+        color: #4362FD;
+        background: #ffffff;
+        border-radius: 48px;
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    
     }
 }
