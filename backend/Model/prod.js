@@ -70,6 +70,8 @@ const ProdSchema = new mongoose.Schema({
 
 const Prod = mongoose.model('Prod', ProdSchema);
 
-export default Prod;
+module.exports = Prod;
+const Card = mongoose.model('Card', CardSchema)
+module.exports = Card;
 
 // so when we will make query for certain city we should get alll the cards having that city as parameter

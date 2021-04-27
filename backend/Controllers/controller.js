@@ -26,7 +26,7 @@ export const addProduct = async (req,res) => {
 export const getByCity = async (req,res) => {
     try{
         const city = params.city;
-        const product = await Prod.find({ city : city});
+        const product = await Card.find({ city : city});
         res.status(200).json(product);
     }
     catch(error){
