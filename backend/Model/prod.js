@@ -72,4 +72,4 @@ const Prod = mongoose.model('Prod', ProdSchema);
 
 export default Prod;
 
-// so when we will make query for certain city we should get alll the cards having 
+// so when we will make query for certain city we should get alll the cards having that city as parameter
