@@ -1,10 +1,20 @@
 import React, { Component } from 'react'
 import './card.css'
+import Cookies from 'universal-cookie'
+
+const cookies = new Cookies();
+
+const callReporter = (cardId)=>{
+    // cookies.set('report',cardId,{maxAge:60*60*1000})
+}
 
 export default class Card extends Component {
 
     reporthandler =(event)=>{
-        
+        console.log(this.props.Id);
+        // take this Id and save it as cookie with expiry 5min
+        // callReporter(this.props.Id)
+        cookies.set('report',this.props.Id,{maxAge:60*60*1000})
     }
 
     render () {
