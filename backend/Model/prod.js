@@ -1,11 +1,15 @@
 import mongoose from 'mongoose';
 
-const ProdSchema = new mongoose.Schema({
-    name : {
+const CardSchema = new mongoose.Schema({
+    outofstock:{
+        type:Boolean,
+        default:false
+    },
+    quantity :  {
         type : String,
         required : true
     },
-    availability :  {
+    shopName :  {
         type : String,
         required : true
     },
@@ -44,6 +48,24 @@ const ProdSchema = new mongoose.Schema({
             reason : String,
         }
     ]
+})
+
+const ProdSchema = new mongoose.Schema({
+    mail:{
+        type:String,unique: true
+    },
+	password: {
+         type: String
+    },
+	mobile:{
+        type:String,
+        unique: true
+    },
+	uname:{
+        type:String,
+        unique: false
+    },
+    card:[CardSchema]
 });
 
 const Prod = mongoose.model('Prod', ProdSchema);

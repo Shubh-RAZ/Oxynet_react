@@ -1,13 +1,13 @@
-// import './App.css';
-// import Homepage from './Components/Homepage';
+import './App.css';
+import Homepage from './Components/Homepage';
 // import About from './Components/about_us/about'
-import ResetPassword from './ResetPassword';
+// import SupplierDashboard from './Components/supplier-dashboard/SupplierDashboard'
 
 function App() {
   return (
-    <div >
-     {/* <Homepage/> */}
-     <ResetPassword/>
+    <div className="App">
+     <Homepage/>
+     {/* <SupplierDashboard/> */}
      {/* <About></About> */}
     </div>
   );

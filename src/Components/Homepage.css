@@ -24,6 +24,7 @@ letter-spacing: 10px;
 }
 
 .select{
+    width: 220px;
     outline: none;
     border-style: none;
     height: 5vh;
@@ -130,6 +131,7 @@ letter-spacing: 10px;
     }
 
     .select{
+        width: 220px;
         font-size: 12px;
     }
 
@@ -156,6 +158,7 @@ letter-spacing: 10px;
     }
 
     .select{
+        width: 220px;
         font-size: 12px;
     }
 
@@ -219,6 +222,7 @@ letter-spacing: 10px;
     }
 
     .select{
+        width: 220px;
         font-size: 15px;
 
     }
@@ -251,6 +255,7 @@ letter-spacing: 10px;
     }
 
     .select{
+        width: 220px;
         font-size: 12px;
     }
 

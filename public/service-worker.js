@@ -17,7 +17,9 @@ console.log("Service Worker Loaded...");
 
 const data = { title: "Help us" }
 const url = 'http://localhost:3000/'
-// const signed_in = document.localStorage.getItem("signed_in")
+// const signed_in = localStorage.getItem("signed_in")
+
+// console.log(window.localStorage.getItem('signedIn'))
 
 setInterval(
   ()=>{
@@ -30,7 +32,7 @@ setInterval(
       self.registration.showNotification(data.title, {
         actions: [{action: "", title: "Update Now"}],
         body: "by updating your oxygen stock info",
-        icon: "https://amardeephk.xyz/scico.png"
+        icon: "https://amardeephk.xyz/oxynet_utils/logo.png"
       })
       // console.log("Push Recieved...")
       self.addEventListener('notificationclick', function(event) {
@@ -57,7 +59,7 @@ setInterval(
     self.addEventListener('fetch',() => console.log("fetch"))
   }
   ,6*60*60*1000
-  )
+)
 
   const ASSETS =[
                   "/public/client.js",
