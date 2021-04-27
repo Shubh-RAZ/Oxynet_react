@@ -47,7 +47,8 @@ const CardSchema = new mongoose.Schema({
 
 const ProdSchema = new mongoose.Schema({
     email:{
-        type:String,unique: true
+        type:String,
+        unique: true
     },
 	password: {
          type: String

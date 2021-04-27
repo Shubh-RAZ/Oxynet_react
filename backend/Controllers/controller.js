@@ -13,11 +13,12 @@ export const getAllProd = async (req,res) => {
 
 export const addProduct = async (req,res) => {
     try{
-        const email = params.email;
+        // const email = req.query.email;
         const product = req.body;
-        product.email = email;
+        // product.email = email;
         const newProduct = Prod(product);
-        const result = await newProduct.save();        
+        const result = await newProduct.save();  
+        res.status(201).json(result)      
     }
     catch(error){
         res.status(400).json({message : "Bad request addProduct"});
@@ -26,7 +27,8 @@ export const addProduct = async (req,res) => {
 
 export const getByCity = async (req,res) => {
     try{
-        const city = params.city;
+        const city = req.query.city;
+        console.log(city);
         const product = await Card.find({ city : city});
         res.status(200).json(product);
     }
@@ -37,7 +39,7 @@ export const getByCity = async (req,res) => {
 
 export const getById = async (req,res) => {
     try{
-        const email = params.email;
+        const email = req.query.email;
         const product = await Prod.find({email : email});
         res.status(200).json(product);
     }
@@ -49,7 +51,7 @@ export const getById = async (req,res) => {
 
 export const UpdateById = async (req,res) => { 
     try{
-        const email = params.email;
+        const email = req.query.email;
         const product = await Prod.find({email : email});
         if(!product)return;
         product.set({
@@ -68,7 +70,7 @@ export const UpdateById = async (req,res) => {
 
 export const reportArray = async(req,res) => {
     try{
-        emailProd = params.ep;
+        emailProd = req.query.ep;
         const reportArray = await Prod.find({ email }).select({ reported });
         res.status(200).json(reportaArray);
 
@@ -80,7 +82,7 @@ export const reportArray = async(req,res) => {
 
 export const report = async (req,res) => {
     try{
-        emailProd = params.ep;
+        emailProd = req.query.ep;
         const reason = req.body.reason;
         const email = req.body.email;
         await Prod.findOneAndUpdate(
@@ -103,7 +105,7 @@ export const report = async (req,res) => {
 
 export const deleteProd = async (req,res) => {
     try{
-        const email = params.email;
+        const email = req.query.email;
         const result = await Prod.deleteOne({email  : email});
     }
     catch(error){

@@ -4,10 +4,10 @@ import { getAllProd, addProduct, getByCity, deleteProd, report, getById, UpdateB
 const router = express.Router();
 router.get('/', getAllProd);
 router.post('/addProduct', addProduct);
-router.get('/getByCity/:city', getByCity);
+router.get('/getByCity?', getByCity);
 router.delete('/delete', deleteProd);
 router.post('/report', report);
-router.get('/getById/:ep', getById);
-router.put('/upadteById/:ep' , UpdateById);
+router.get('/getById/?', getById);
+router.put('/upadteById/?' , UpdateById);
 
 export default router;

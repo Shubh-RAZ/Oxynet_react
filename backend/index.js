@@ -21,7 +21,8 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.use('/oxynet', function (req, res, next) {
-	console.log('Request Type:', req.body)
+	console.log('Request Type:', req.query)
+
 	next()
 })
 
