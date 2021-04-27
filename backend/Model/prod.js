@@ -71,3 +71,5 @@ const ProdSchema = new mongoose.Schema({
 const Prod = mongoose.model('Prod', ProdSchema);
 
 export default Prod;
+
+// so when we will make query for certain city we should get alll the cards having 

@@ -3,6 +3,10 @@ import './card.css'
 
 export default class Card extends Component {
 
+    reporthandler =(event)=>{
+        
+    }
+
     render () {
         return (
          <React.Fragment>
@@ -26,7 +30,7 @@ export default class Card extends Component {
                             </div>
                             <div className="service">
                                 <div className="service-quote">Service not satifactory?</div>
-                                <div className="report-btn">Report</div>
+                                <div className="report-btn" onClick={this.reporthandler}>Report</div>
                             </div>
                         </div>
                     </div>
