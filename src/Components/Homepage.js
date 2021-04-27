@@ -6,24 +6,33 @@ import District from './districts'
 
 const response = [
     {
-    Id : 'hi',
-    quantity:'hi',
-    shopName:'hi',
-    address:'hi',
-    cost:'hi',
-    phoneNo1:'hi',
-    phoneNo2:'hi'
+    Id : 'kuch toh bhi',
+    quantity:'80',
+    shopName:'Shivhare`s oxygen',
+    address:'Kala chabutra, patli gali, timbaktu ',
+    cost:'12000',
+    phoneNo1:'8695432138',
+    phoneNo2:'6381365485'
     },
-
     {
-    Id : 'hi2',
-    quantity:'hi2',
-    shopName:'hi2',
-    address:'hi2',
-    cost:'hi2',
-    phoneNo1:'hi2',
-    phoneNo2:'hi2'
-    }
+        Id : 'kuch toh bhi',
+        quantity:'80',
+        shopName:'Shivhare`s oxygen',
+        address:'Kala chabutra, patli gali, timbaktu ',
+        cost:'12000',
+        phoneNo1:'8695432138',
+        phoneNo2:'6381365485'
+        },
+        {
+            Id : 'kuch toh bhi',
+            quantity:'80',
+            shopName:'Shivhare`s oxygen',
+            address:'Kala chabutra, patli gali, timbaktu ',
+            cost:'12000',
+            phoneNo1:'8695432138',
+            phoneNo2:'6381365485'
+            },
+            
 
 ]
 

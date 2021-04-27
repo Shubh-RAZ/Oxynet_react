@@ -5,7 +5,7 @@ import Cookies from 'universal-cookie'
 const cookies = new Cookies();
 
 const callReporter = (cardId)=>{
-    // cookies.set('report',cardId,{maxAge:60*60*1000})
+    cookies.set('report',cardId,{maxAge:60*60*1000})
 }
 
 export default class Card extends Component {
@@ -13,8 +13,8 @@ export default class Card extends Component {
     reporthandler =(event)=>{
         console.log(this.props.Id);
         // take this Id and save it as cookie with expiry 5min
-        // callReporter(this.props.Id)
-        cookies.set('report',this.props.Id,{maxAge:60*60*1000})
+        callReporter(this.props.Id)
+        // cookies.set('report',this.props.Id,{maxAge:60*60*1000})
     }
 
     render () {
@@ -40,7 +40,7 @@ export default class Card extends Component {
                             </div>
                             <div className="service">
                                 <div className="service-quote">Service not satifactory?</div>
-                                <div className="report-btn" onClick={this.reporthandler}>Report</div>
+                                <button type="button" className="report-btn" onClick={this.reporthandler}>Report</button>
                             </div>
                         </div>
                     </div>

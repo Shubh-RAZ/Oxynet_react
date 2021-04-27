@@ -7,40 +7,35 @@ const CardSchema = new mongoose.Schema({
     },
     quantity :  {
         type : String,
-        required : true
+        // required : true
     },
     shopName :  {
         type : String,
-        required : true
+        // required : true
     },
     address :  {
         type : String,
-        required : true
+        // required : true
     },
     city :  {
         type : String,
-        required : true
-    },
-    email :  {
-        type : String,
-        required : true,
-        unique : true
+        // required : true
     },
     state :  {
         type : String,
-        required : true
+        // required : true
     },
     cost : {
         type : Number,
-        required : true
+        // required : true
     },
     phoneNo1 : {
         type : Number,
-        required : true
+        // required : true
     },
     phoneNo2 :  {
         type : Number,
-        required : true
+        // required : true
     },
     reported : [
         {
@@ -51,7 +46,7 @@ const CardSchema = new mongoose.Schema({
 })
 
 const ProdSchema = new mongoose.Schema({
-    mail:{
+    email:{
         type:String,unique: true
     },
 	password: {
@@ -69,11 +64,9 @@ const ProdSchema = new mongoose.Schema({
 });
 
 const Prod = mongoose.model('Prod', ProdSchema);
+export default  Prod;
 
- export default  Prod;
 const Card = mongoose.model('Card', CardSchema)
-export{
-    card
-}
+export{Card}
 
 // so when we will make query for certain city we should get alll the cards having that city as parameter

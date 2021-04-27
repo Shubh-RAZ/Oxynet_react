@@ -109,12 +109,18 @@ padding-right: 20px;
 }
 
 .report-btn{
-    background: #FF505C;
+    background: #ff2d3b;
     color: white;
+    margin: 0;
+    font-family: 'Montserrat';
+    border-width: 0;
+    border-radius: 5px;
+    /* width: 100%; */
+    position: relative;
     padding-left: 15px;
     padding-right: 15px;
-    padding-top: 1px;
-    padding-bottom: 1px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     
 
 }

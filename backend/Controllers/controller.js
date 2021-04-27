@@ -1,6 +1,7 @@
 import Prod from '../Model/prod.js';
 
 export const getAllProd = async (req,res) => {
+    console.log("recieved");
     try{
         const producers = await Prod.find();
         res.status(200).json(producers);
@@ -41,6 +42,7 @@ export const getById = async (req,res) => {
         res.status(200).json(product);
     }
     catch(error){
+        console.log(error)
         res.status(400).json({message : "Bad request getById"});
     }
 }
