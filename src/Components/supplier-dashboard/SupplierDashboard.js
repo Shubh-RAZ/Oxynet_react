@@ -28,7 +28,8 @@ constructor(props){
             render:[
                 {
                     Id : 'kuch toh bhi',
-                    city: 'Akola',
+                    district: 'Akola',
+                    state:'Maharashtra',
                     quantity:'80',
                     shopName:'Shivh`s oxygen',
                     address:'Kala chabutra, patli gali, timbaktu ',
@@ -41,10 +42,11 @@ constructor(props){
                 ,
                 {
                     Id : 'kuch toh bhi',
-                    city: 'Akola',
+                    district: 'Akola',
+                    state:'Maharashtra',
                     quantity:'80',
-                    shopName:'Shivh`s oxygen',
-                    address:'Kala chabutra, patli gali, timbaktu ',
+                    shopName:'Shivhlala`s oxygen',
+                    address:'lal chabutra, patli gali, timbaktu ',
                     cost:'12000',
                     phoneNo1:'8695432138',
                     phoneNo2:'6381365485',
@@ -54,7 +56,8 @@ constructor(props){
                 ,
                 {
                     Id : 'kuch toh bhi',
-                    city: 'Akola',
+                    district: 'Akola',
+                    state:'Andhra Pradesh',
                     quantity:'80',
                     shopName:'Shivh`s oxygen',
                     address:'Kala chabutra, patli gali, timbaktu ',
@@ -66,23 +69,32 @@ constructor(props){
                 }
             ],
             editcard:[],
-            district:'Reset district',
-            stateName: '',
+            state: '',
             districts: [],
+            Id : '',
+            district: '',
+            quantity:'',
+            shopName:'',
+            address:'',
+            cost:'',
+            phoneNo1:'',
+            phoneNo2:'',
+            lastUpdate:'',
+            reportedBy:'',
         }
     }
 
-    handleChange = async(event) => {
+    districtChangeHandler = async(event) => {
         let val = event.target.value
         await this.setState({district: val})
         // console.log(this.state.district)
     }
     
-    myChangeHandler = async(event) => {
+    stateChangeHandler = async(event) => {
         let val = event.target.value
-        await this.setState({stateName: val})
+        await this.setState({state: val})
         await this.setState({district:'Reset district'})
-        var districts = dist(this.state.stateName)
+        var districts = dist(this.state.state)
         await this.setState({districts:districts})
     }
 
@@ -91,6 +103,28 @@ constructor(props){
         this.setState({
             showform:true
         })
+    }
+
+    handleEdit = async(index)=>{
+        await this.setState({editcard:this.state.render[index]})
+        // console.log(this.state.editcard)
+        const state = this.state.editcard.state
+        await this.setState({state:state})
+        console.log(this.state.state)
+        var districts = dist(this.state.state)
+        await this.setState({districts : districts})
+        console.log(this.state.districts)
+        const district = this.state.editcard.district
+        await this.setState({district:district})
+        console.log(this.state.district)
+        this.setState({showform : true})
+    }
+
+    handleformEdit=async(event)=>{
+        let name = event.target.name;
+        let val = event.target.value;
+        await this.setState({[name]: val});
+        console.log(this.state);        
     }
     
     handledelete = (Id,index) => {
@@ -143,9 +177,7 @@ constructor(props){
         this.setState({
             showform:false
         })
-    }
-
-    
+    }   
 
     logout = ()=>{
         window.location.assign('./')
@@ -155,76 +187,69 @@ constructor(props){
         return (
             <div className="homepage-whole">
                 {this.state.showform? 
-                    <div style={{margin:'auto'}}>
-                        <div>
-                            <div className="supplier-form-whole" style={{margin: 'auto'}}>
-                                <div className="form-inside">
-                                    <form>
-                                    {/* <div style={{height:'30px'}}></div> */}
-                                    <div className="select-field">
-                                    <select name="state" id="state" className="select-supply" placeholder="Select State" defaultValue="">
-                                        {/* <option value="" disabled >Select Your Item</option> */}
-                                        <option value="Andhra Pradesh">Oxygen Cylinder</option>
-                                    </select>
+                    <div>
+                            <div className="c768" style={{height:'20vh'}}></div>
+                            <form className action={this.handlecancel} method="post">
+                                <div className="form" style={{}}>
+                                    <div className="row">
+                                    <div className="col-md-6">
+                                        <div className style={{}}>
+                                            <div className style={{padding: '12px'}}>
+                                                <input name="quantity" onChange={this.handleformEdit} defaultValue={this.state.editcard.quantity} type="text" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Quantity (eg. 100 Oxygen Cylinders)" required></input>
+                                            </div>
+                                            <div className style={{padding: '12px'}}>
+                                                 <input name="cosr" onChange={this.handleformEdit} defaultValue={this.state.editcard.cost} type="text" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Cost (MRP) per cylinder" required></input>
+                                            </div>
+                                            <div className style={{padding: '12px'}}>
+                                                <input name="phoneNo1" onChange={this.handleformEdit} defaultValue={this.state.editcard.phoneNo1} type="number" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="10 digit Phone Number" required></input>
+                                            </div>
+                                            <div className style={{padding: '12px'}}>
+                                                <input name="phoneNo2" onChange={this.handleformEdit} defaultValue={this.state.editcard.phoneNo2} type="number" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Alternate Phone Number" ></input>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div style={{height:'30px'}}></div>
-                                    <div className="input-field">
-                                        <input defaultValue={this.state.editcard.quantity} type="text" className="in-input" placeholder="Quantity (eg. 100 Oxygen Cylinders)" required></input>
+                                    <div className="col-md-6">
+                                        <div className style={{}}>
+                                        <div className style={{padding: '12px'}}>
+                                            <input name="shopName" onChange={this.handleformEdit} defaultValue={this.state.editcard.shopName} type="text" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Shop Name" required></input>
+                                        </div>
+                                        <div className style={{padding: '12px'}}>
+                                            <input name="address" onChange={this.handleformEdit} defaultValue={this.state.editcard.address} type="text" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Shop Address" required></input>
+                                        </div>
+                                        <div className style={{padding: '12px'}}>
+                                            <select className="" style={{borderRadius: '10px', width: '100%', padding: '13px',border:'1px solid #5A78FD'}}  name="state" id="state" onChange={this.stateChangeHandler} required>
+                                                <option disabled >Select state</option>
+                                                { states.map((state,index) => {return (this.state.state==state)? <option key={index} name={state} selected>{state}</option> : <option key={index} name={state}>{state}</option>}) }
+                                                {/* {states.map((state,index) => (<option key={index} name={state}>{state}</option>))} */}
+                                            </select>
+                                        </div>
+                                        <div className style={{padding: '12px'}}>
+                                            <select className="" style={{borderRadius: '10px', width: '100%', padding: '13px',border:'1px solid #5A78FD'}}  name="district" id="district" defaultValue={this.state.disrtict} onChange={this.districtChangeHandler} required>
+                                                <option disabled >Select district</option>
+                                                { this.state.districts.map((district,index) => {return (this.state.district==district)? <option key={index} selected>{district}</option>:<option key={index}>{district}</option>}) }
+                                            </select>
+                                        </div>
+                                        </div>
                                     </div>
-                                    <div style={{height:'30px'}}></div>
-                                    <div className="input-field">
-                                        <input defaultValue={this.state.editcard.cost} type="text" className="in-input" placeholder="Cost (MRP) per cylinder" required></input>
                                     </div>
-                                    <div style={{height:'30px'}}></div>
-                                    <div className="input-field">
-                                        <input defaultValue={this.state.editcard.phone1} type="number" className="in-input" placeholder="10 digit Phone Number" required></input>
-                                    </div>
-                                    <div style={{height:'30px'}}></div>
-                                    <div className="input-field">
-                                        <input defaultValue={this.state.editcard.phone2} type="number" className="in-input" placeholder="Alternate Phone Number" ></input>
-                                    </div>
-                                    <div style={{height:'30px'}}></div>
-                                    <div className="input-field">
-                                        <input defaultValue={this.state.editcard.shopname} type="text" className="in-input" placeholder="Shop Name" required></input>
-                                    </div>
-                                    <div style={{height:'30px'}}></div>
-                                    <div className="input-field">
-                                        <input defaultValue={this.state.editcard.shopadd} type="text" className="in-input" placeholder="Shop Address" required></input>
-                                    </div>
-                                    <div style={{height:'30px'}}></div>
-                                    <div className="input-field" >
-                                        <select className="in-input" name="stateName" id="state" defaultValue={this.state.editcard.state} onChange={this.myChangeHandler} required>
-                                            <option value="" disabled >Select state</option>
-                                            {states.map((state,index) => (<option key={index} name={state}>{state}</option>))}
-                                        </select>
-                                    </div>
-                                    <div style={{height:'30px'}}></div>
-                                    <div className="input-field">
-                                        <select className="in-input" name="district" id="district" value={this.state.disrtict} onChange={this.handleChange} required>
-                                            <option>{(this.state.district === 'Reset district') ? 'Select district' :'Reset district'}</option>
-                                            { this.state.districts.map((district,index) => (<option key={index}>{district}</option>)) }
-                                        </select>
-                                    </div>
-                                    </form>
-                                    <button className="save-btn" style={{border:'none'}}>
-                                        Save
-                                    </button>
-                                </div> 
-                            </div>
-                        </div>
-                        {/* <SupplierForm></SupplierForm> */}
-                        {this.state.showform ? <div onClick={this.handlecancel}>
-                            <button type="button" className="report-btn" onClick={this.handleform} style={{width:'50%',height:'50px'}}>Cancel</button>
-                        </div>: null}
+                                </div>
+                                <div style={{padding:'0 20px'}}>
+                                    <div style={{height:'10px'}}></div>
+                                        <button type="submit" className="report-btn form" style={{height:'50px',background:'blue'}}>Submit</button>
+                                    <div style={{height:'20px'}}></div>
+                                        <button type="button" className="report-btn form" onClick={this.handlecancel} style={{height:'50px'}}>Cancel</button>
+                                    <div style={{height:'20px'}}></div>
+                                </div>
+                            </form>
                     </div>
                                   :
                     <div>
-                    <div className="top-ribbon" style={{padding:'15px 10%',height:'100%'}}>
-                        <div className="name">Oxynet</div>
-                        <div style={{width:'80%',height:'5px'}}></div>
-                        <button className="click-here-btn" onClick={this.logout} style={{background:'white',border:'0'}}><font style={{color:'blue'}}>Logout</font></button>
-                    </div>
-                    <div className="row row-class">
+                        <div className="top-ribbon" style={{padding:'15px 10%',height:'100%'}}>
+                            <div className="name">Oxynet</div>
+                            <div style={{width:'80%',height:'5px'}}></div>
+                            <button className="click-here-btn" onClick={this.logout} style={{background:'white',border:'0'}}><font style={{color:'blue'}}>Logout</font></button>
+                        </div>
+                        <div className="row row-class">
                         {this.state.render.map((obj,index)=>{return(
                             <div className="col-md-3 cards" style={{width: '100%',padding:'15px 0'}} >
                             <div className="card-inside">
@@ -260,7 +285,7 @@ constructor(props){
                                 <div className="service">
                                     <button type="button" className="report-btn" onClick={()=>{this.handledelete(obj.Id,index)}} style={{width:'80px'}}>Delete</button>
                                     <div style={{width:'50px'}}></div>
-                                    <button type="button" className="report-btn" onClick={this.handleform} style={{width:'80px',background:'green'}}>Edit</button>
+                                    <button type="button" className="report-btn" onClick={()=>{this.handleEdit(index)}} style={{width:'80px',background:'green'}}>Edit</button>
                                 </div>
                                 <div style={{height:'5px'}}></div>
                                 <font>
@@ -292,3 +317,66 @@ constructor(props){
         )
     }
 }
+
+
+//                      <div style={{margin:'auto'}}>
+//                         <div>
+//                             <div className="supplier-form-whole" style={{margin: 'auto'}}>
+//                                 <div className="form-inside">
+//                                     <form>
+//                                     {/* <div style={{height:'30px'}}></div> */}
+//                                     <div className="select-field">
+//                                     <select name="state" id="state" className="select-supply" placeholder="Select State" defaultValue="">
+//                                         {/* <option value="" disabled >Select Your Item</option> */}
+//                                         <option value="Andhra Pradesh">Oxygen Cylinder</option>
+//                                     </select>
+//                                     </div>
+//                                     <div style={{height:'30px'}}></div>
+//                                     <div className="input-field">
+//                                         <input defaultValue={this.state.editcard.quantity} type="text" className="in-input" placeholder="Quantity (eg. 100 Oxygen Cylinders)" required></input>
+//                                     </div>
+//                                     <div style={{height:'30px'}}></div>
+//                                     <div className="input-field">
+//                                         <input defaultValue={this.state.editcard.cost} type="text" className="in-input" placeholder="Cost (MRP) per cylinder" required></input>
+//                                     </div>
+//                                     <div style={{height:'30px'}}></div>
+//                                     <div className="input-field">
+//                                         <input defaultValue={this.state.editcard.phoneNo1} type="number" className="in-input" placeholder="10 digit Phone Number" required></input>
+//                                     </div>
+//                                     <div style={{height:'30px'}}></div>
+//                                     <div className="input-field">
+//                                         <input defaultValue={this.state.editcard.phoneNo2} type="number" className="in-input" placeholder="Alternate Phone Number" ></input>
+//                                     </div>
+//                                     <div style={{height:'30px'}}></div>
+//                                     <div className="input-field">
+//                                         <input defaultValue={this.state.editcard.shopName} type="text" className="in-input" placeholder="Shop Name" required></input>
+//                                     </div>
+//                                     <div style={{height:'30px'}}></div>
+//                                     <div className="input-field">
+//                                         <input defaultValue={this.state.editcard.address} type="text" className="in-input" placeholder="Shop Address" required></input>
+//                                     </div>
+//                                     <div style={{height:'30px'}}></div>
+//                                     <div className="input-field" >
+//                                         <select className="in-input" name="state" id="state" defaultValue={this.state.editcard.state} onChange={this.myChangeHandler} required>
+//                                             <option value="" disabled >Select state</option>
+//                                             {states.map((state,index) => (<option key={index} name={state}>{state}</option>))}
+//                                         </select>
+//                                     </div>
+//                                     <div style={{height:'30px'}}></div>
+//                                     <div className="input-field">
+//                                         <select className="in-input" name="district" id="district" value={this.state.disrtict} onChange={this.handleChange} required>
+//                                             <option>{(this.state.district === 'Reset district') ? 'Select district' :'Reset district'}</option>
+//                                             { this.state.districts.map((district,index) => (<option key={index}>{district}</option>)) }
+//                                         </select>
+//                                     </div>
+//                                     </form>
+//                                     <button className="save-btn" style={{border:'none'}}>
+//                                         Save
+//                                     </button>
+//                                 </div> 
+//                             </div>
+//                             <div onClick={this.handlecancel}>
+//                                 <button type="button" className="report-btn" onClick={this.handlecancel} style={{width:'50%',height:'50px'}}>Cancel</button>
+//                             </div>
+//                         </div>
+//                     </div>

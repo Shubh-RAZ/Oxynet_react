@@ -3,3 +3,28 @@ select{
     border: 0px;
     background-color:#ffffff;;
 }
+
+input{
+    border: 1px solid #5A78FD;
+    box-sizing: border-box;
+    border-radius: 20px;
+  }
+
+  .c768{
+      display:block
+  }
+
+  .form{
+    width:50%;
+    display:block;
+    margin:auto
+  }
+
+  @media(max-width:768px){
+    .form{
+        width: 320px
+    }
+    .c768{
+        display:none
+    }
+  }

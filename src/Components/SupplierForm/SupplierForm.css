@@ -67,7 +67,10 @@ border-radius: 10px;
     color: white;
 
 }
-
+.right{
+    position:relative;
+    left:50%
+}
 @media(max-width:942px){
     .in-input{
         border: 1px solid #FFFFFF;
