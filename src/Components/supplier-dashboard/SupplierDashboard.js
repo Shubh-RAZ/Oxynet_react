@@ -56,7 +56,7 @@ constructor(props){
                 ,
                 {
                     Id : 'kuch toh bhi',
-                    district: 'Akola',
+                    district: 'Kurnool',
                     state:'Andhra Pradesh',
                     quantity:'80',
                     shopName:'Shivh`s oxygen',
@@ -110,13 +110,13 @@ constructor(props){
         // console.log(this.state.editcard)
         const state = this.state.editcard.state
         await this.setState({state:state})
-        console.log(this.state.state)
+        // console.log(this.state.state)
         var districts = dist(this.state.state)
         await this.setState({districts : districts})
-        console.log(this.state.districts)
+        // console.log(this.state.districts)
         const district = this.state.editcard.district
         await this.setState({district:district})
-        console.log(this.state.district)
+        // console.log(this.state.district)
         this.setState({showform : true})
     }
 
@@ -125,6 +125,10 @@ constructor(props){
         let val = event.target.value;
         await this.setState({[name]: val});
         console.log(this.state);        
+    }
+
+    handleSubmit = async()=>{
+
     }
     
     handledelete = (Id,index) => {
