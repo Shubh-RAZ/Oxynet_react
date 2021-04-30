@@ -4,15 +4,7 @@ import Cookies from 'universal-cookie'
 
 const cookies = new Cookies();
 
-export default class Card extends Component {
-
-    reporthandler =(event)=>{
-        const Id = this.props.Id
-        console.log(Id);
-        var names = JSON.parse(localStorage.getItem('reported'))
-        // console.log(localStorage.getItem.lastIndexOf(this.props.Id));
-        // localStorage.setItem('reported',JSON.stringify(names))
-    }
+export default class EditCard extends Component {
 
     render () {
         return (
@@ -49,8 +41,9 @@ export default class Card extends Component {
                                 </div>    
                             </div>
                             <div className="service">
-                                <div className="service-quote">Service not satifactory?</div>
-                                <button type="button" className="report-btn" onClick={this.reporthandler}>Report</button>
+                                <button type="button" className="report-btn" onClick={this.reporthandler} style={{width:'80px'}}>Delete</button>
+                                <div style={{width:'50px'}}></div>
+                                <button type="button" className="report-btn" onClick={this.reporthandler} style={{width:'80px',background:'green'}}>Edit</button>
                             </div>
                             <font>
                                 Reported by {this.props.reportedBy}

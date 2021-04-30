@@ -8,23 +8,27 @@
 }
 
 .cards{
-    height: 57vh;
-    /* padding-right: 20px; */
+    /* height: 57vh; */
+    padding: 15px;
 }
 
 .card-inside{
-    height: 90%;
+    /* height: 90%; */
+    display: block;
+    margin: auto;
+    width: 320px;
     background: #FFFFFF;
-box-shadow: 0px 4px 21px rgba(0, 0, 0, 0.13);
-padding-bottom: 20px;
-padding-top: 20px;
-padding-left: 20px;
-padding-right: 20px;
+    box-shadow: 0px 4px 21px rgba(0, 0, 0, 0.13);
+    padding-bottom: 30px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
 }
 
 .card-name{
     color: #6F50FF;
-    font-size: 29px;
+    font-size: 25px;
     font-weight: 600;
 }
 
@@ -41,6 +45,8 @@ padding-right: 20px;
 }
 
 .card-avail{
+    border-radius: 15px;
+    padding-top: 5px;
     background: #6F50FF;
     width: fit-content;
     margin: auto;
@@ -126,15 +132,10 @@ padding-right: 20px;
 }
 
 @media(max-width:960px){
-    .cards{
-        height: 63vh;
-    }
+    
 }
 
 @media(max-width:840px){
-    .cards{
-        height: 63vh;
-    }
 
     .avail{
         font-size: 20px;
@@ -150,11 +151,10 @@ padding-right: 20px;
         padding-left: 20px;
         padding-right: 20px;
     }
-    .cards{
-        height: 62vh;
-    }
 
     .card-avail{
+        border-radius: 10px;
+        padding-top: 5px;
         font-size: 20px;
         padding-left: 20px;
         padding-right: 20px;
@@ -176,11 +176,10 @@ padding-right: 20px;
         padding-left: 20px;
         padding-right: 20px;
     }
-    .cards{
-        height: 67vh;
-    }
 
     .card-avail{
+        border-radius: 10px;
+        padding-top: 5px;
         font-size: 20px;
         padding-left: 20px;
         padding-right: 20px;

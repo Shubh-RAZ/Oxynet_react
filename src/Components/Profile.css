@@ -18,6 +18,7 @@ hr{
   border: 0;
   width: 110%;
   position: relative;
+  left: -5%;
   height:1px;
   background-color: #DCDDFC;
 }
@@ -177,7 +178,7 @@ div.spl{
 
 .bluButton{
     align-items: center;
-    /* padding: 2vh 12vw; */
+    padding: 2vh 12vw;
     background: linear-gradient(180deg, #6D8AFC 0%, #4D6CFD 100%);
     border-radius: 6px;
     color: white;

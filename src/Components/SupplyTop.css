@@ -3,18 +3,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
 
 .supply_top_whole{
-    display: flex;
-    height: 10vh;
+    /* display: flex; */
+    /* height: 0vh; */
+    width: 100vw;
     background: #6F50FF;
     justify-content: space-between;
     align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    overflow: hidden;
+    /* padding-left: 20px;
+    padding-right: 20px; */
+    /* overflow: hidden; */
 }
 
 .supply_name{
-font-family: "samarkan";
+/* font-family: "samarkan"; */
 color: white;
 font-weight: 400;
 font-size: 40px;
@@ -31,8 +32,8 @@ letter-spacing: 3px;
     background:white;
     color: black;
     width: fit-content;
-    padding-left: 10px;
-    padding-right: 10px;
+    /* padding-left: 10px;
+    padding-right: 10px; */
     padding-top: 2px;
     padding-bottom: 2px;
 }

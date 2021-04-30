@@ -1,0 +1,31 @@
+.c33{
+    display: grid;
+    grid-template-columns:33.33% 33.33% 33.33%;
+    position: relative;            
+}
+
+select.clear{
+    font-family: 'Montserrat';
+    color: #858592;
+    background-color: white;
+    font-size:17px;
+    padding: 1vh;
+    text-align: center;
+    border-width: 8px;
+    border-radius: 7px;
+    border-left: 1px solid #96a8fc;
+    border-right: 1px solid #96a8fc;
+    border-top: 1px solid #96a8fc;
+    border-bottom: 1px solid #96a8fc;
+    font-size: small;
+    padding: 2vh 1vh;
+  }
+
+select::-ms-expand {
+    /* IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    /* IE 5-7 */
+    filter: alpha(opacity=0);
+    /* Good browsers :) */
+    opacity:0;
+   }

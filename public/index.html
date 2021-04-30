@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- <script src="main.js"></script> --><!--service_worker-->
+    
+    <!-- service_worker here-->
+    <script src="main.js"></script>
+    
     <meta charset="utf-8" />
     <meta name="theme-color" content="#6F50FF">
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -78,5 +81,34 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+
+        function getParameterByName(name, url = window.location.href) {
+                name = name.replace(/[\[\]]/g, '\\$&');
+                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+      newUser = async()=>{
+        // console.log(':(')
+        const token =  getParameterByName('token')
+        if (token){
+            console.log(':)');
+            const result = await fetch(`http://localhost:3005/api/v1/users/signup/verify?token=`+token, {
+                method: 'GET',
+            }).then((res) => res.json())
+            if (result.status=='ok'){
+                localStorage.setItem('token', result.token)
+                document.cookie = 'token='+result.token
+                window.location.assign('./dashbord')
+            }
+        }else{console.log(':(')}
+      }
+
+      newUser()
+    </script>
   </body>
 </html>
