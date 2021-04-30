@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       <Router>
         <Route exact path="/" component={Homepage}/>
-        <Route exact path="/dashbord" component={SupplierDashboard}/>
+        <Route exact path="/dashboard" component={SupplierDashboard}/>
         <Route exact path="/login" component={Login}/>
         <Route exact path="/Fpw" component={Fpw}  />
         <Route exact path="/ResetPassword" component={ResetPassword}  />

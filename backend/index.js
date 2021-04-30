@@ -22,7 +22,6 @@ app.use(cors())
 
 app.use('/oxynet', function (req, res, next) {
 	console.log('Request Type:', req.query)
-
 	next()
 })
 

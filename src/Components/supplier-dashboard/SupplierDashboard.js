@@ -159,7 +159,7 @@ constructor(props){
                             <div className="supplier-form-whole" style={{margin: 'auto'}}>
                                 <div className="form-inside">
                                     <form>
-                                    <div style={{height:'30px'}}></div>
+                                    {/* <div style={{height:'30px'}}></div> */}
                                     <div className="select-field">
                                     <select name="state" id="state" className="select-supply" placeholder="Select State" defaultValue="">
                                         {/* <option value="" disabled >Select Your Item</option> */}

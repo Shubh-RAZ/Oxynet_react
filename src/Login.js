@@ -57,7 +57,7 @@ export default class Login extends Component {
         if (result.status === 'ok') {
             localStorage.setItem('token', result.token)
             cookies.set('token', result.token)
-            window.location.assign('./dashbord')
+            window.location.assign('./dashboard')
         } else {
             alert(result.error)
             console.log('error');
