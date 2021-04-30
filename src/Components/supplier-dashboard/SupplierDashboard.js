@@ -6,6 +6,8 @@ import './../options.css'
 import './../SupplierForm/SupplierForm.css'
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 const states = ['Andhra Pradesh','Arunachal Pradesh','Assam','Bihar','Chandigarh (UT)','Chhattisgarh','Dadra and Nagar Haveli (UT)','Daman and Diu (UT)','Delhi (NCT)','Goa','Gujarat','Haryana','Himachal Pradesh','Jammu and Kashmir','Jharkhand','Karnataka','Kerala','Lakshadweep (UT)','Madhya Pradesh','Maharashtra','Manipur','Meghalaya','Mizoram','Nagaland','Odisha','Puducherry (UT)','Punjab','Rajasthan','Sikkim','Tamil Nadu','Telangana','Tripura','Uttarakhand','Uttar Pradesh','West Bengal']
 
@@ -79,8 +81,6 @@ constructor(props){
             cost:'',
             phoneNo1:'',
             phoneNo2:'',
-            lastUpdate:'',
-            reportedBy:'',
         }
     }
 
@@ -124,7 +124,7 @@ constructor(props){
         let name = event.target.name;
         let val = event.target.value;
         await this.setState({[name]: val});
-        console.log(this.state);        
+        // console.log(this.state);        
     }
 
     handleSubmit = async()=>{
@@ -184,6 +184,8 @@ constructor(props){
     }   
 
     logout = ()=>{
+        localStorage.clear()
+        cookies.remove('token')
         window.location.assign('./')
     }
 
@@ -255,7 +257,7 @@ constructor(props){
                         </div>
                         <div className="row row-class">
                         {this.state.render.map((obj,index)=>{return(
-                            <div className="col-md-3 cards" style={{width: '100%',padding:'15px 0'}} >
+                            <div className="col-md-3 cards" style={{width: '100%',padding:'15px 0'}} key={index} >
                             <div className="card-inside">
                                 <div className="card-name">{obj.shopName}</div>
                                 <div className="card-add">{obj.address}</div>
