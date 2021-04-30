@@ -1,0 +1,30 @@
+{
+  "name": "Live covid supplies...",
+  "icons": [
+    {
+      "src": "/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "background_color": "#ffffff",
+  "start_url": "/?pwa=true",
+  "short_name": "OXYNET",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#6F50FF",
+  "shortcuts": [
+    
+  ],
+  "description": "At OXYNET we connect users and oxygen cylinder suppliers directly. Needy people visiting our site will see the updated and real-time availability of oxygen.",
+  "screenshots": [
+    
+  ]
+}
