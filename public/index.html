@@ -95,6 +95,7 @@
       newUser = async()=>{
         // console.log(':(')
         const token =  getParameterByName('token')
+        // console.log(token);
         if (token){
             console.log(':)');
             const result = await fetch(`http://localhost:3005/api/v1/users/signup/verify?token=`+token, {
@@ -103,8 +104,8 @@
             if (result.status=='ok'){
                 localStorage.setItem('token', result.token)
                 document.cookie = 'token='+result.token
-                window.location.assign('./dashbord')
-            }else{}
+                window.location.assign('./dashboard')
+            }
         }
       }
 

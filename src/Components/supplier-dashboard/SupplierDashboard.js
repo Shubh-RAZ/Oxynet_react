@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './../Homepage.css'
+import domain from './../../Domain';
 // import SupplierForm from '../SupplierForm/SupplierForm'
 import './SupplierDashboard.css'
 import './../options.css'
@@ -128,7 +129,32 @@ constructor(props){
     }
 
     handleSubmit = async()=>{
+        const result = await fetch(`${domain}/api/v1/users/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                state:this.state.state,
+                Id :this.state.Id,
+                district:this.state.district,
+                quantity:this.state.quantity,
+                shopName:this.state.shopName,
+                address:this.state.address,
+                cost:this.state.cost,
+                phoneNo1:this.state.phoneNo1,
+                phoneNo2:this.state.phoneNo2,
+            })
+        }).then((res) => res.json())
 
+        if (result.status === 'ok') {
+            localStorage.setItem('token', result.token)
+            cookies.set('token', result.token)
+            window.location.assign('./dashboard')
+        } else {
+            alert(result.error)
+            console.log('error');
+        }
     }
     
     handledelete = (Id,index) => {

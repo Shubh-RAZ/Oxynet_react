@@ -49,15 +49,15 @@ export default class Homepage extends Component {
             await this.setState({district:''})
         }
         // console.log(this.state.district)
-        let filterByCity = this.state.response.filter(
+        let filterBydistrict = this.state.response.filter(
             card => {
-                if(card.city == this.state.district){
+                if(card.district == this.state.district){
                     return(card)
                 }
             }
         )
         if(val !== 'Reset district'){
-            this.setState({render: filterByCity})
+            this.setState({render: filterBydistrict})
         }else{ 
             this.setState({render: this.state.response})
         }
@@ -83,7 +83,7 @@ export default class Homepage extends Component {
             [
                 {
                     Id : 'kuch toh bhi',
-                    city: 'Akola',
+                    district: 'Akola',
                     quantity:'80',
                     shopName:'Shivh`s oxygen',
                     address:'Kala chabutra, patli gali, timbaktu ',
@@ -96,7 +96,7 @@ export default class Homepage extends Component {
                 ,
                 {
                     Id : 'kuch toh bhi',
-                    city: 'Akola',
+                    district: 'Akola',
                     quantity:'80',
                     shopName:'Shivh`s oxygen',
                     address:'Kala chabutra, patli gali, timbaktu ',
@@ -109,7 +109,7 @@ export default class Homepage extends Component {
                 ,
                 {
                     Id : 'kuch toh bhi',
-                    city: 'Akola',
+                    district: 'Akola',
                     quantity:'80',
                     shopName:'Shivh`s oxygen',
                     address:'Kala chabutra, patli gali, timbaktu ',
@@ -122,7 +122,7 @@ export default class Homepage extends Component {
                 ,
                 {
                     Id : 'kuch toh bhi',
-                    city: 'Akola',
+                    district: 'Akola',
                     quantity:'80',
                     shopName:'Shivh`s oxygen',
                     address:'Kala chabutra, patli gali, timbaktu ',
@@ -135,7 +135,7 @@ export default class Homepage extends Component {
                 ,
                 {
                     Id : 'kuch toh bhi',
-                    city: 'Akola',
+                    district: 'Akola',
                     quantity:'80',
                     shopName:'Shivh`s oxygen',
                     address:'Kala chabutra, patli gali, timbaktu ',
@@ -148,7 +148,7 @@ export default class Homepage extends Component {
                 ,
                 {
                     Id : 'kuch toh bhi',
-                    city: 'Akola',
+                    district: 'Akola',
                     quantity:'80',
                     shopName:'Shivh`s oxygen',
                     address:'Kala chabutra, patli gali, timbaktu ',
@@ -161,7 +161,7 @@ export default class Homepage extends Component {
                 ,
                 {
                     Id : 'kuch toh bhi',
-                    city: 'Akola',
+                    district: 'Akola',
                     quantity:'80',
                     shopName:'Shivh`s oxygen',
                     address:'Kala chabutra, patli gali, timbaktu ',
