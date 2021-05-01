@@ -26,15 +26,13 @@ export default class Fpw extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "mobile" : this.state.mobile,
+                "email" : this.state.email,
             })
         }).then((res) => res.json())
             // everythign went fine
 
             if (result.status === 'ok') {
-
-            cookies.set('mobile', this.state.mobile)
-            window.location.assign('/dashbord')
+            window.location.assign('/login')
             
         } else {
             alert(result.error)
@@ -53,7 +51,7 @@ export default class Fpw extends Component {
     render() {
         return (
         <>
-            <div style={{height:'25vh'}}  onload={this.hi}>
+            <div style={{height:'25vh'}}>
 
             </div>
             <div className= '' style={{width:'360px',padding:'20px',margin:'auto',display:'block'}}>
@@ -62,7 +60,7 @@ export default class Fpw extends Component {
                 <div>
                     <input 
                         className="clear spl inpShadow" 
-                        name="mobile" 
+                        name="email" 
                         onChange={this.myChangeHandler} 
                         type="text" 
                         placeholder="Enter your email"

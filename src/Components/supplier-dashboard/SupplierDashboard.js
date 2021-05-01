@@ -82,6 +82,7 @@ constructor(props){
             cost:'',
             phoneNo1:'',
             phoneNo2:'',
+            index:''
         }
     }
 
@@ -100,24 +101,30 @@ constructor(props){
     }
 
     
-    handleform = () => {
+    handleform = async() => {
+        await this.setState({index:'',state:'',Id :'',district:'',quantity:'',shopName:'',address:'',cost:'',phoneNo1:'',phoneNo2:''})
+        await this.setState({editcard:[],districts:[]})
         this.setState({
             showform:true
         })
+        console.log(this.state);
     }
 
     handleEdit = async(index)=>{
         await this.setState({editcard:this.state.render[index]})
         // console.log(this.state.editcard)
-        const state = this.state.editcard.state
-        await this.setState({state:state})
+        await this.setState({state:this.state.editcard.state,Id :this.state.editcard.Id,district:this.state.editcard.district,quantity:this.state.editcard.quantity,shopName:this.state.editcard.shopName,address:this.state.editcard.address,cost:this.state.editcard.cost,phoneNo1:this.state.editcard.phoneNo1,phoneNo2:this.state.editcard.phoneNo2})
+        await this.setState({index:index})
+        // await this.setState({state:state})
         // console.log(this.state.state)
+        const state = this.state.editcard.state
         var districts = dist(this.state.state)
         await this.setState({districts : districts})
         // console.log(this.state.districts)
-        const district = this.state.editcard.district
-        await this.setState({district:district})
+        // const district = this.state.editcard.district
+        // await this.setState({district:district})
         // console.log(this.state.district)
+        console.log(this.state)
         this.setState({showform : true})
     }
 
@@ -128,32 +135,43 @@ constructor(props){
         // console.log(this.state);        
     }
 
-    handleSubmit = async()=>{
-        const result = await fetch(`${domain}/api/v1/users/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                state:this.state.state,
-                Id :this.state.Id,
-                district:this.state.district,
-                quantity:this.state.quantity,
-                shopName:this.state.shopName,
-                address:this.state.address,
-                cost:this.state.cost,
-                phoneNo1:this.state.phoneNo1,
-                phoneNo2:this.state.phoneNo2,
-            })
-        }).then((res) => res.json())
+    handleSubmit = async(event)=>{
+        event.preventDefault()
+        // const result = await fetch(`${domain}/api/v1/users/login`, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         state:this.state.state,
+        //         Id :this.state.Id,
+        //         district:this.state.district,
+        //         quantity:this.state.quantity,
+        //         shopName:this.state.shopName,
+        //         address:this.state.address,
+        //         cost:this.state.cost,
+        //         phoneNo1:this.state.phoneNo1,
+        //         phoneNo2:this.state.phoneNo2,
+        //     })
+        // }).then((res) => res.json())
 
-        if (result.status === 'ok') {
-            localStorage.setItem('token', result.token)
-            cookies.set('token', result.token)
-            window.location.assign('./dashboard')
+        if (true) {            
+                let card = {state:this.state.state,Id :this.state.Id,district:this.state.district,quantity:this.state.quantity,shopName:this.state.shopName,address:this.state.address,cost:this.state.cost,phoneNo1:this.state.phoneNo1,phoneNo2:this.state.phoneNo2}
+                // console.log(card);
+                const index = this.state.index 
+                // console.log(index);
+                const render = this.state.render
+                // console.log(render)
+                render.splice(index,1)
+                // console.log(render);
+                render.push(card)
+                // console.log(render);
+                this.setState({render:render})
+                console.log(this.state.render)
+                this.setState({showform:false})
         } else {
-            alert(result.error)
-            console.log('error');
+            // alert(result.error)
+            // console.log('error');
         }
     }
     
@@ -221,7 +239,7 @@ constructor(props){
                 {this.state.showform? 
                     <div>
                             <div className="c768" style={{height:'20vh'}}></div>
-                            <form className action={this.handlecancel} method="post">
+                            <form className onSubmit={this.handleSubmit}>
                                 <div className="form" style={{}}>
                                     <div className="row">
                                     <div className="col-md-6">
@@ -250,14 +268,14 @@ constructor(props){
                                         </div>
                                         <div className style={{padding: '12px'}}>
                                             <select className="" style={{borderRadius: '10px', width: '100%', padding: '13px',border:'1px solid #5A78FD'}}  name="state" id="state" onChange={this.stateChangeHandler} required>
-                                                <option disabled >Select state</option>
+                                                <option disabled selected>Select state</option>
                                                 { states.map((state,index) => {return (this.state.state==state)? <option key={index} name={state} selected>{state}</option> : <option key={index} name={state}>{state}</option>}) }
                                                 {/* {states.map((state,index) => (<option key={index} name={state}>{state}</option>))} */}
                                             </select>
                                         </div>
                                         <div className style={{padding: '12px'}}>
                                             <select className="" style={{borderRadius: '10px', width: '100%', padding: '13px',border:'1px solid #5A78FD'}}  name="district" id="district" defaultValue={this.state.disrtict} onChange={this.districtChangeHandler} required>
-                                                <option disabled >Select district</option>
+                                                <option disabled  selected>Select district</option>
                                                 { this.state.districts.map((district,index) => {return (this.state.district==district)? <option key={index} selected>{district}</option>:<option key={index}>{district}</option>}) }
                                             </select>
                                         </div>

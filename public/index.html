@@ -104,6 +104,7 @@
             if (result.status=='ok'){
                 localStorage.setItem('token', result.token)
                 document.cookie = 'token='+result.token
+                document.cookie = 'signedIn='+true
                 window.location.assign('./dashboard')
             }
         }
