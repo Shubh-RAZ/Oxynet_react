@@ -1,7 +1,7 @@
 import Prod from '../Model/prod.js';
 
+// changed
 export const getAllProd = async (req,res) => {
-    console.log("recieved");
     try{
         const producers = await Prod.find();
         res.status(200).json(producers);
@@ -11,13 +11,44 @@ export const getAllProd = async (req,res) => {
     }
 }
 
+// changed
+export const addProducer = async(req,res) => {
+    try{
+        const producers = Prod(req.body);
+        await producers.save()
+        res.status(200).json(producers);
+    }
+    catch(error){
+        res.status(400).json({message : "Bad request addProducer"});
+    }
+
+}
+
+// changed
 export const addProduct = async (req,res) => {
     try{
-        // const email = req.query.email;
+        const email = req.query.email;
         const product = req.body;
-        // product.email = email;
-        const newProduct = Prod(product);
-        const result = await newProduct.save();  
+
+        await Prod.findOneAndUpdate(
+            {email : email}, 
+                {
+                    $push : {
+                        card : {
+                            outofstock : product.outofstock,
+                            quantity : product.quantity,
+                            shopName : product.shopName,
+                            address : product.address,
+                            city : product.city,
+                            state : product.state,
+                            cost : product.cost,
+                            phoneNo1 : product.phoneNO1,
+                            phoneNo2 : product.phoneNO2,
+                        } 
+                    }
+                }
+            )
+        res.status(200).json({message : "Added report"});
         res.status(201).json(result)      
     }
     catch(error){
@@ -29,7 +60,7 @@ export const getByCity = async (req,res) => {
     try{
         const city = req.query.city;
         console.log(city);
-        const product = await Card.find({ city : city});
+        const product = await Prod.find({ city : city});
         res.status(200).json(product);
     }
     catch(error){
@@ -37,6 +68,7 @@ export const getByCity = async (req,res) => {
     }
 }
 
+// changed
 export const getById = async (req,res) => {
     try{
         const email = req.query.email;
@@ -49,19 +81,45 @@ export const getById = async (req,res) => {
     }
 }
 
+// changed 
 export const UpdateById = async (req,res) => { 
+    const product = req.body;
+    console.log(product)
     try{
-        const email = req.query.email;
-        const product = await Prod.find({email : email});
-        if(!product)return;
-        product.set({
-            cost : req.body.cost,
-            availability : req.body.availability,
-            phoneNO1 : req.body.phoneNo1,
-            phoneNO2 : req.body.phoneNo2,
-        })
-        product.save();
-        res.status(200).json(product);
+        await Prod.findOneAndUpdate(
+            { email: email }, 
+            { $pull: { 
+                      card: {
+                            shopName: product.shopName,
+                        }  
+                    } 
+            })
+        res.status(200).json({message : "removed file successfully"});
+    }
+    catch(error){
+        res.status(400).json({message : "Bad request in deleting"});
+    }
+
+    try{
+        await Prod.findOneAndUpdate(
+            {email :email}, 
+                {
+                    $addToSet : {
+                        card : {
+                            outofstock : product.outofstock,
+                            quantity : product.quantity,
+                            shopName : product.shopName,
+                            address : product.address,
+                            city : product.city,
+                            state : product.state,
+                            cost : product.cost,
+                            phoneNo1 : product.phoneNO1,
+                            phoneNo2 : product.phoneNO2,
+                        } 
+                    }
+                }
+            )
+        res.status(200).json({message : "updated file successfully"});
     }
     catch(error){
         res.status(400).json({message : "Bad request UpdateById"});
@@ -70,9 +128,9 @@ export const UpdateById = async (req,res) => {
 
 export const reportArray = async(req,res) => {
     try{
-        emailProd = req.query.ep;
+        email = 'Talha@gmail.com';
         const reportArray = await Prod.find({ email }).select({ reported });
-        res.status(200).json(reportaArray);
+        res.status(200).json(reportArray);
 
     }
     catch(error){
@@ -103,12 +161,37 @@ export const report = async (req,res) => {
     }
 }
 
-export const deleteProd = async (req,res) => {
+// changed
+export const deleteAllByEmail = async (req,res) => {
     try{
         const email = req.query.email;
         const result = await Prod.deleteOne({email  : email});
+        if(!result.deletedCount){
+            res.status(200).json({message : "Not found"});
+        }
+        else res.status(200).json({message : "deleted"});
     }
     catch(error){
         res.status(400).json({message : "Bad request delete"});
+    }
+}
+
+// changed
+export const deleteCardByEmail = async (req,res) => {
+    const shopname = req.body.shopName;
+    const email = req.body.email
+    try{
+        await Prod.findOneAndUpdate(
+            { email: email }, 
+            { $pull: { 
+                      card: {
+                            shopName: shopname,
+                        }  
+                    } 
+            })
+        res.status(200).json({message : "removed file successfully"});
+    }
+    catch(error){
+        res.status(400).json({message : "Bad request in deleting"});
     }
 }
