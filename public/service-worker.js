@@ -13,7 +13,6 @@ console.log("Service Worker Loaded...");
 // self.addEventListener('activate', function(event) {
 //     // Perform some task
 //   });
-
 const data = { title: "Help us" }
 const url = 'http://localhost:3000/'
 // const signed_in = localStorage.getItem("signed_in")

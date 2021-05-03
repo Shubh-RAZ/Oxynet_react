@@ -82,7 +82,7 @@ constructor(props){
             cost:'',
             phoneNo1:'',
             phoneNo2:'',
-            index:''
+            index:'',
         }
     }
 
@@ -156,16 +156,21 @@ constructor(props){
         // }).then((res) => res.json())
 
         if (true) {            
-                let card = {state:this.state.state,Id :this.state.Id,district:this.state.district,quantity:this.state.quantity,shopName:this.state.shopName,address:this.state.address,cost:this.state.cost,phoneNo1:this.state.phoneNo1,phoneNo2:this.state.phoneNo2}
+                const d = new Date()
+                const a = d.toLocaleString()
+                console.log(a)
+                let card = {lastUpdate:a,state:this.state.state,Id :this.state.Id,district:this.state.district,quantity:this.state.quantity,shopName:this.state.shopName,address:this.state.address,cost:this.state.cost,phoneNo1:this.state.phoneNo1,phoneNo2:this.state.phoneNo2}
                 // console.log(card);
                 const index = this.state.index 
                 // console.log(index);
                 const render = this.state.render
                 // console.log(render)
-                render.splice(index,1)
+                const n = Object.keys(this.state.editcard).length
+                if(n>0){render.splice(index,1)}
                 // console.log(render);
                 render.push(card)
                 // console.log(render);
+                this.setState({editcard:[]})
                 this.setState({render:render})
                 console.log(this.state.render)
                 this.setState({showform:false})
@@ -248,7 +253,7 @@ constructor(props){
                                                 <input name="quantity" onChange={this.handleformEdit} defaultValue={this.state.editcard.quantity} type="text" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Quantity (eg. 100 Oxygen Cylinders)" required></input>
                                             </div>
                                             <div className style={{padding: '12px'}}>
-                                                 <input name="cosr" onChange={this.handleformEdit} defaultValue={this.state.editcard.cost} type="text" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Cost (MRP) per cylinder" required></input>
+                                                 <input name="cost" onChange={this.handleformEdit} defaultValue={this.state.editcard.cost} type="text" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Cost (MRP) per cylinder" required></input>
                                             </div>
                                             <div className style={{padding: '12px'}}>
                                                 <input name="phoneNo1" onChange={this.handleformEdit} defaultValue={this.state.editcard.phoneNo1} type="number" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="10 digit Phone Number" required></input>
@@ -309,7 +314,7 @@ constructor(props){
                                     <div className="card-avail">
                                         <div className="avail">Availaibility</div>
                                         <div className="avail"><h1>{obj.quantity}</h1></div>
-                                        <div className="avail">Last updated at: {obj.lastUpdate}</div>
+                                        <div className="avail">Last updated on: {obj.lastUpdate}</div>
                                         <div style={{'color':'white','fontSize':'15px'}}>Oxygen Cylinders</div>
                                     </div>
                                 </div>

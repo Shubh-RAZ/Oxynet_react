@@ -25,7 +25,7 @@ export default class Card extends Component {
                                 <div className="card-avail">
                                     <div className="avail">Availaibility</div>
                                     <div className="avail"><h1>{this.props.quantity}</h1></div>
-                                    <div className="avail">Last updated at: {this.props.lastUpdate}</div>
+                                    <div className="avail">Last updated on: {this.props.lastUpdate}</div>
                                     <div style={{'color':'white','fontSize':'15px'}}>Oxygen Cylinders</div>
                                 </div>
                             </div>

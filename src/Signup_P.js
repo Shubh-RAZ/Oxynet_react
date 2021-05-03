@@ -16,11 +16,13 @@ export default class Signup_P extends Component {
             password: '',
             passwordConfirm:'',
             mobile:'',
+            disabled :false
         }
     }
 
     submit = async (event)=> {
         event.preventDefault()
+        this.setState({disabled:true})
         if (this.state.password==this.state.passwordConfirm){
             const result = await fetch(`${domain}/api/v1/users/signup/auth`, {
                 method: 'POST',
@@ -49,6 +51,7 @@ export default class Signup_P extends Component {
     }
     
     myChangeHandler = async (event) => {
+        this.setState({disabled:false})
         let name = event.target.name;
         let val = event.target.value;
         await this.setState({[name]: val});
@@ -61,7 +64,7 @@ export default class Signup_P extends Component {
         
             <div>
             <div style={{width:'360px',padding:'20px',margin:'auto',display:'block'}}>
-            <form>
+            <form onSubmit={this.submit}>
             <div className="">
                 <div style={{height: '8vh'}}></div>
                 <h2 className="text center">
@@ -72,7 +75,7 @@ export default class Signup_P extends Component {
             <div className="">
                 <div style={{padding:"0 0vh 0 0vh"}}>
                     <input
-                        required="required" 
+                        required 
                         onChange={this.myChangeHandler} 
                         className="clear" 
                         type="text" 
@@ -84,10 +87,12 @@ export default class Signup_P extends Component {
                 </div>
                 <div style={{padding:"0 0vh 0 0vh"}}>
                     <input
-                        required="required" 
+                        required 
                         onChange={this.myChangeHandler} 
                         className="clear" 
                         type="number" 
+                        minLength="10"
+                        maxLength="10"
                         placeholder="Mobile Number"
                         name="mobile" 
                         style={{padding:"2vh 2vw",textAlign:"left",width:"100%"}}
@@ -96,7 +101,7 @@ export default class Signup_P extends Component {
                 </div>
                 <div style={{padding:"0 0vh 0 0vh"}}>
                     <input
-                        required="required" 
+                        required 
                         onChange={this.myChangeHandler} 
                         className="clear" 
                         type="email" 
@@ -108,7 +113,7 @@ export default class Signup_P extends Component {
                 </div>
                 <div style={{padding:"0 0vh 0 0vh"}}>
                     <input
-                        required="required" 
+                        required 
                         onChange={this.myChangeHandler} 
                         className="clear" 
                         type="password" 
@@ -120,7 +125,7 @@ export default class Signup_P extends Component {
                 </div>
                 <div style={{padding:"0 0vh 0 0vh"}}>
                     <input
-                        required="required" 
+                        required 
                         onChange={this.myChangeHandler} 
                         className="clear" 
                         type="password" 
@@ -130,7 +135,15 @@ export default class Signup_P extends Component {
                     />
                     <div style={{height:"5vh"}}></div>
                 </div>
-            <button type='submit' className="bluButton" style={{width:'100%'}} onClick={this.submit}>Submit</button>
+                <button type='submit' className="bluButton signup" style={{width:'100%'}} disabled={this.state.disabled}>Submit</button>
+
+                <a href="./terms">
+                    <button type='button' style={{fontFamily: 'Montserrat', fontStyle: 'normal', fontWeight: 'normal', fontSize: '14px', lineHeight: '17px', color: '#91919F'}}>
+                        <font style={{fontFamily: 'Montserrat', fontStyle: 'normal', fontWeight: 500, fontSize: '10px', lineHeight: '17px', color: '#91919F',textAlign:'left'}}>
+                            by creating account you accept our <font style={{color:'blue'}}>terms and conditions</font>
+                        </font>
+                    </button>
+                </a>
 
                 {/* <div style={{height:"1vh"}}></div>
                 <div style={{textAlign:"center"}}>
