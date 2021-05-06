@@ -5,6 +5,7 @@ import './Homepage.css'
 // import District from './districts'
 // import Cookies from 'universal-cookie';
 import './options.css'
+import logo from './../img/white_logo.png'
 
 // const cookies = new Cookies();
 
@@ -186,6 +187,9 @@ export default class Homepage extends Component {
         return (
             <div className="homepage-whole">
                 <div className="top-ribbon">
+                    {/* <div>
+                        <img src={logo} />
+                    </div> */}
                     <div className="name">Oxynet</div>
                     <div className="state-city">
                         <div className="state">
@@ -235,17 +239,18 @@ export default class Homepage extends Component {
                     <div>
                     <div style={{'margin':'auto','maxWidth':'80vw','width':'500px', 'textAlign':'justify'}}>
                         <br/><br/>
-                        <h1 style={{'textAlign':'center'}}>
+                        <br/><br/>
+                        {/* <h1 style={{'textAlign':'center'}}>
                             Alert!
-                        </h1>
+                        </h1> */}
                         <font style={{'textAlign':'center'}}>
-                            <h6>
+                            <h4>
                                 By using this website you understand and agree....
-                            </h6>
+                            </h4>
                         </font>
                         <br></br>
                         <font>
-                            OXYNET shall under no circumstances be held liable for any direct, indirect, incidental, consequential, special, punitive, exemplary, or any other damages arising out of the use of the oxygen availability information Platform. There is no assurance by OXYNET of any specified outcomes of the use of the oxygen availability Information Platform. The users understand that by using any data or information provided on the oxygen availability information platform shall be at their own risk and that oxynet is not responsible for any consequences for offering such data/information.
+                            OXYNET shall under no circumstances be held liable for any direct, indirect, incidental, consequential, or any other damages arising out of the use of the oxygen availability information Platform. There is no assurance by OXYNET of any specified outcomes of the use of the oxygen availability Information Platform. The users understand that by using any data or information provided on the oxygen availability information platform shall be at their own risk and that oxynet is not responsible for any consequences for offering such data/information.
                         </font>
                         <br/><br/>
                     </div>

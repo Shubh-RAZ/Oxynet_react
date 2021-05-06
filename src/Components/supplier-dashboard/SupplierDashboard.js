@@ -82,7 +82,7 @@ constructor(props){
             cost:'',
             phoneNo1:'',
             phoneNo2:'',
-            index:''
+            index:'',
         }
     }
 
@@ -156,16 +156,21 @@ constructor(props){
         // }).then((res) => res.json())
 
         if (true) {            
-                let card = {state:this.state.state,Id :this.state.Id,district:this.state.district,quantity:this.state.quantity,shopName:this.state.shopName,address:this.state.address,cost:this.state.cost,phoneNo1:this.state.phoneNo1,phoneNo2:this.state.phoneNo2}
+                const d = new Date()
+                const a = d.toLocaleString()
+                console.log(a)
+                let card = {lastUpdate:a,state:this.state.state,Id :this.state.Id,district:this.state.district,quantity:this.state.quantity,shopName:this.state.shopName,address:this.state.address,cost:this.state.cost,phoneNo1:this.state.phoneNo1,phoneNo2:this.state.phoneNo2}
                 // console.log(card);
                 const index = this.state.index 
                 // console.log(index);
                 const render = this.state.render
                 // console.log(render)
-                render.splice(index,1)
+                const n = Object.keys(this.state.editcard).length
+                if(n>0){render.splice(index,1)}
                 // console.log(render);
                 render.push(card)
                 // console.log(render);
+                this.setState({editcard:[]})
                 this.setState({render:render})
                 console.log(this.state.render)
                 this.setState({showform:false})
@@ -248,7 +253,7 @@ constructor(props){
                                                 <input name="quantity" onChange={this.handleformEdit} defaultValue={this.state.editcard.quantity} type="text" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Quantity (eg. 100 Oxygen Cylinders)" required></input>
                                             </div>
                                             <div className style={{padding: '12px'}}>
-                                                 <input name="cosr" onChange={this.handleformEdit} defaultValue={this.state.editcard.cost} type="text" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Cost (MRP) per cylinder" required></input>
+                                                 <input name="cost" onChange={this.handleformEdit} defaultValue={this.state.editcard.cost} type="text" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Cost (MRP) per cylinder" required></input>
                                             </div>
                                             <div className style={{padding: '12px'}}>
                                                 <input name="phoneNo1" onChange={this.handleformEdit} defaultValue={this.state.editcard.phoneNo1} type="number" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="10 digit Phone Number" required></input>
@@ -309,14 +314,14 @@ constructor(props){
                                     <div className="card-avail">
                                         <div className="avail">Availaibility</div>
                                         <div className="avail"><h1>{obj.quantity}</h1></div>
-                                        <div className="avail">Last updated at: {obj.lastUpdate}</div>
+                                        <div className="avail">Last updated on: {obj.lastUpdate}</div>
                                         <div style={{'color':'white','fontSize':'15px'}}>Oxygen Cylinders</div>
                                     </div>
                                 </div>
                                 <div className="rate">Rs . {obj.cost} / Cylinder</div>
                                 <div className="phone">
                                     <div className="phone-svg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="white" className="bi bi-telephone" viewBox="0 0 16 16">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" className="bi bi-telephone" viewBox="0 0 16 16">
                                     <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
                                     </svg></div>
                                     <div className="phone-detail">
@@ -325,6 +330,7 @@ constructor(props){
                                                 +91-{obj.phoneNo1}
                                             </font>
                                         </a> , 
+                                        <br></br>
                                         <a href={`tel:`+obj.phoneNo2}>
                                             <font style={{'color':'blue'}}>
                                                 +91-{obj.phoneNo2}
@@ -333,9 +339,19 @@ constructor(props){
                                     </div>    
                                 </div>
                                 <div className="service">
-                                    <button type="button" className="report-btn" onClick={()=>{this.handledelete(obj.Id,index)}} style={{width:'80px'}}>Delete</button>
+                                    <button type="button" className="del-btn" onClick={()=>{this.handledelete(obj.Id,index)}} style={{width:'80px'}}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#6F50FF" class="bi bi-trash-fill" viewBox="0 0 16 16">
+  <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+</svg>
+Delete
+                                    </button>
                                     <div style={{width:'50px'}}></div>
-                                    <button type="button" className="report-btn" onClick={()=>{this.handleEdit(index)}} style={{width:'80px',background:'green'}}>Edit</button>
+                                    <button type="button" className="editt-btn" onClick={()=>{this.handleEdit(index)}} style={{width:'80px'}}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#6F50FF" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+  <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+</svg>
+Edit
+                                    </button>
                                 </div>
                                 <div style={{height:'5px'}}></div>
                                 <font>
