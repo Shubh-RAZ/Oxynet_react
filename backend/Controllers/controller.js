@@ -21,7 +21,6 @@ export const addProducer = async(req,res) => {
     catch(error){
         res.status(400).json({message : "Bad request addProducer"});
     }
-
 }
 
 // changed checked
@@ -52,18 +51,49 @@ export const addProduct = async (req,res) => {
                     }
                 }
             )
-        res.status(200).json({message : "Added report"});
+        res.status(200).json({message : "Added product"});
     }
     catch(error){
         res.status(400).json({message : "Bad request addProduct"});
     }
 }
 
-export const getByCity = async (req,res) => {
-    const city = params.city;
+// cadded
+export const getByState = async (req,res) => {
+    const state_ = req.params.state;
+    console.log(state_);
     try{
         const product = await Prod.find();
-        res.status(200).json(product);
+        const stateProduct = [];
+        for(var i=0;i<product.length; i++){
+            for(var j=0; j<product[i].card.length; j++){
+                if(product[i].card[j].state == state_){
+                    stateProduct.push(product[i].card[j]);
+                }
+            }
+        }
+        res.status(200).json(stateProduct);
+    }
+    catch(error){
+        res.status(400).json({message : "Bad request getProdByState"});
+    }
+}
+
+//changed checked
+export const getByCity = async (req,res) => {
+    const city_ = req.params.city;
+    console.log(city_);
+    try{
+        const product = await Prod.find();
+        const cityProduct = [];
+        for(var i=0;i<product.length; i++){
+            for(var j=0; j<product[i].card.length; j++){
+                if(product[i].card[j].city == city_){
+                    cityProduct.push(product[i].card[j]);
+                }
+            }
+        }
+        res.status(200).json(cityProduct);
     }
     catch(error){
         res.status(400).json({message : "Bad request getProdByCity"});
@@ -99,8 +129,6 @@ export const UpdateById = async (req,res) => {
         shop[0].cost = product.cost
         shop[0].phoneNO1 = product.phoneNO1;
         shop[0].phoneNO1 = product.phoneNO2;
-
-        console.log(shop)
         
         try{
             await Prod.updateOne({ email : prodEmail }, {
