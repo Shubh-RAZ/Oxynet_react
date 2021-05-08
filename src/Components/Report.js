@@ -15,10 +15,10 @@ export default class Report extends Component {
                     </div>
                     <div className="form-group">
                         <label  className="label-class" for="reason">Reason</label>
-                        <input type="text" className="reason" id="reason"></input>
+                        <textarea maxLength="200" type="text" className="reason" id="reason"></textarea>
                     </div>
                 </form>
-                <div className="form-report-submit"> Submit </div>
+                <button className="form-report-submit"> Submit </button>
                 </div>
             </div>
         )

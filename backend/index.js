@@ -8,8 +8,6 @@ import routers from './routers/router.js';
 
 dotenv.config({ path: './config.env' });
 
-// const JWT_SECRET = process.env.JWT_SECRET
-
 mongoose.connect(process.env.DATABASE, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
@@ -20,14 +18,14 @@ const app = express()
 app.use(bodyParser.json())
 app.use(cors())
 
-app.use('/oxynet', function (req, res, next) {
-	console.log('Request Type:', req.query)
-	next()
-})
+// app.use('/oxynet', function (req, res, next) {
+// 	console.log('Request Type:', req.query)
+// 	next()
+// })
 
 app.use('/oxynet',routers)
 
 const port = process.env.PORT;
 const server = app.listen(port, () => {
-  console.log(`App running on port ${port}...`);
+//  console.log(`App running on port ${port}...`);
 });

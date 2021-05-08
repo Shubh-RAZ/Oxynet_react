@@ -41,7 +41,7 @@ export default class Homepage extends Component {
         }
     }
 
-    handleChange = async(event) => {
+    handleDistrict = async(event) => {
         await this.setState({searching : true})
         let val = event.target.value
         await this.setState({render: []})
@@ -64,7 +64,7 @@ export default class Homepage extends Component {
         }
     }
 
-    myChangeHandler = async(event) => {
+    handleState = async(event) => {
         let val = event.target.value
         await this.setState({stateName: val})
         await this.setState({render: []})
@@ -72,7 +72,7 @@ export default class Homepage extends Component {
         var districts = []
         districts = dist(this.state.stateName)
         await this.setState({districts:districts})
-        const result = await fetch(`https://oxynet.herokuapp.com/`, {
+        const result = await fetch(`http://localhost:5000/oxynet/getByState?state=`+this.state.stateName, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -80,102 +80,8 @@ export default class Homepage extends Component {
         }).then((res) => res.json())
         // await this.setState({render:result})
         if(result.status==='ok'){
-            await this.setState({render:
-            [
-                {
-                    Id : 'kuch toh bhi',
-                    district: 'Akola',
-                    quantity:'80',
-                    shopName:'Shivh`s oxygen',
-                    address:'Kala chabutra, patli gali, timbaktu ',
-                    cost:'12000',
-                    phoneNo1:'8695432138',
-                    phoneNo2:'6381365485',
-                    lastUpdate:'10:25',
-                    reportedBy:'10'
-                }
-                ,
-                {
-                    Id : 'kuch toh bhi',
-                    district: 'Akola',
-                    quantity:'80',
-                    shopName:'Shivh`s oxygen',
-                    address:'Kala chabutra, patli gali, timbaktu ',
-                    cost:'12000',
-                    phoneNo1:'8695432138',
-                    phoneNo2:'6381365485',
-                    lastUpdate:'10:25',
-                    reportedBy:'10'
-                }
-                ,
-                {
-                    Id : 'kuch toh bhi',
-                    district: 'Akola',
-                    quantity:'80',
-                    shopName:'Shivh`s oxygen',
-                    address:'Kala chabutra, patli gali, timbaktu ',
-                    cost:'12000',
-                    phoneNo1:'8695432138',
-                    phoneNo2:'6381365485',
-                    lastUpdate:'10:25',
-                    reportedBy:'10'
-                }
-                ,
-                {
-                    Id : 'kuch toh bhi',
-                    district: 'Akola',
-                    quantity:'80',
-                    shopName:'Shivh`s oxygen',
-                    address:'Kala chabutra, patli gali, timbaktu ',
-                    cost:'12000',
-                    phoneNo1:'8695432138',
-                    phoneNo2:'6381365485',
-                    lastUpdate:'10:25',
-                    reportedBy:'10'
-                }
-                ,
-                {
-                    Id : 'kuch toh bhi',
-                    district: 'Akola',
-                    quantity:'80',
-                    shopName:'Shivh`s oxygen',
-                    address:'Kala chabutra, patli gali, timbaktu ',
-                    cost:'12000',
-                    phoneNo1:'8695432138',
-                    phoneNo2:'6381365485',
-                    lastUpdate:'10:25',
-                    reportedBy:'10'
-                }
-                ,
-                {
-                    Id : 'kuch toh bhi',
-                    district: 'Akola',
-                    quantity:'80',
-                    shopName:'Shivh`s oxygen',
-                    address:'Kala chabutra, patli gali, timbaktu ',
-                    cost:'12000',
-                    phoneNo1:'8695432138',
-                    phoneNo2:'6381365485',
-                    lastUpdate:'10:25',
-                    reportedBy:'10'
-                }
-                ,
-                {
-                    Id : 'kuch toh bhi',
-                    district: 'Akola',
-                    quantity:'80',
-                    shopName:'Shivh`s oxygen',
-                    address:'Kala chabutra, patli gali, timbaktu ',
-                    cost:'12000',
-                    phoneNo1:'8695432138',
-                    phoneNo2:'6381365485',
-                    lastUpdate:'10:25',
-                    reportedBy:'10'
-                }
-                ,
-
-            ]
-            })
+          this.setState({render:result.cards})
+          console.log(this.state.render)
         }
         await this.setState({searching : true})
         await this.setState({response: this.state.render})
@@ -199,7 +105,7 @@ export default class Homepage extends Component {
                                 </svg>
                             </div>
                             {/* <States  /> */}
-                            <select name="stateName" id="state" className="select" defaultValue="" onChange={this.myChangeHandler}>
+                            <select name="stateName" id="state" className="select" defaultValue="" onChange={this.handleState}>
                                 <option value="" disabled >Select state</option>
                                 {states.map((state,index) => (<option key={index} name={state}>{state}</option>))}
                             </select>
@@ -212,7 +118,7 @@ export default class Homepage extends Component {
                                 </svg>
                             </div>
                             {/* <District state={this.state.stateName}/> */}
-                            <select name="district" id="district" value={this.state.disrtict} className="select" onChange={this.handleChange}>
+                            <select name="district" id="district" value={this.state.disrtict} className="select" onChange={this.handleDistrict}>
                                 <option>{(this.state.district === 'Reset district') ? 'Select district' :'Reset district'}</option>
                                 { this.state.districts.map((district,index) => (<option key={index}>{district}</option>)) }
                             </select>

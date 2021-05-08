@@ -11,7 +11,7 @@ export default class Card extends Component {
         console.log(Id);
         var names = JSON.parse(localStorage.getItem('reported'))
         // console.log(localStorage.getItem.lastIndexOf(this.props.Id));
-        // localStorage.setItem('reported',JSON.stringify(names))
+        localStorage.setItem('reported',JSON.stringify(names))
     }
 
     render () {
@@ -25,8 +25,8 @@ export default class Card extends Component {
                                 <div className="card-avail">
                                     <div className="avail">Availaibility</div>
                                     <div className="avail"><h1>{this.props.quantity}</h1></div>
-                                    <div className="avail">Last updated on: {this.props.lastUpdate}</div>
                                     <div style={{'color':'white','fontSize':'15px'}}>Oxygen Cylinders</div>
+                                    <div className="avail" style={{fontSize:'18px'}}>Last updated on: {this.props.lastUpdate}</div>
                                 </div>
                             </div>
                             <div className="rate">Rs . {this.props.cost} / Cylinder</div>
