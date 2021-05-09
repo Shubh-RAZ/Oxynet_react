@@ -119,11 +119,12 @@
         // console.log(token);
         if (token){
             console.log(':)');
-            const result = await fetch(`http://localhost:3005/api/v1/users/signup/verify?token=`+token, {
+            const result = await fetch(`https://oxynet.herokuapp.com/api/v1/users/signup/verify?token=`+token, {
                 method: 'GET',
             }).then((res) => res.json())
             if (result.status=='ok'){
                 localStorage.setItem('token', result.token)
+                localStorage.setItem('Id', result.Id)
                 document.cookie = 'token='+result.token
                 document.cookie = 'signedIn='+true
                 window.location.assign('./dashboard')

@@ -72,7 +72,7 @@ export default class Homepage extends Component {
         var districts = []
         districts = dist(this.state.stateName)
         await this.setState({districts:districts})
-        const result = await fetch(`http://localhost:5000/oxynet/getByState?state=`+this.state.stateName, {
+        const result = await fetch(`https://oxynet.herokuapp.com/oxynet/getByState?state=`+this.state.stateName, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -169,7 +169,7 @@ export default class Homepage extends Component {
                             return(
                                 <Card  
                                     key={index}
-                                    Id={obj.Id} 
+                                    Id={obj._id} 
                                     quantity={obj.quantity} 
                                     shopName={obj.shopName} 
                                     address={obj.address} 
@@ -178,6 +178,7 @@ export default class Homepage extends Component {
                                     phoneNo2={obj.phoneNo2}
                                     lastUpdate={obj.lastUpdate}
                                     reportedBy={obj.reportedBy}
+                                    parentId={obj.parentId}
                                 />
                             )
                         })}

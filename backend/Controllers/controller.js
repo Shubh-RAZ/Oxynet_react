@@ -191,6 +191,7 @@ export const UpdateById = async (req,res) => {
                         $push : {
                             card : {
                                 outOfStock : empty,
+                                parentId : userId,
                                 lastUpdate:now,
                                 quantity : product.quantity,
                                 shopName : product.shopName,
@@ -245,23 +246,25 @@ export const reportArrayLength = async (req,res) => {
 
 //changed checked
 export const report = async (req,res) => {
-    const reason = req.params.reason;
-    const email = req.params.email;
-    const Id = req.params.Id
-    const shopId = req.params.sId
+    // const reason = req.params.reason;
+    // const email = req.params.email;
+    console.log(req.body);
+    const Id = req.body.Id
+    const shopId = req.body.sId
     try{
-        const market = await Prod.find({Id : Id});
+        const market = await Prod.find({_id : Id});
+        // console.log(market);
         const shops = market[0].card;
         const shop = shops.filter(shops => shops._id == shopId);
         const reportedArray  = shop[0].reported;
         const report = {
-            email : email,
-            reason : reason,
+            email : 'email',
+            reason : 'reason',
         }
         reportedArray.push(report);
         
         try{
-            await Prod.updateOne({ Id : Id }, {
+            await Prod.updateOne({ _id : Id }, {
                 $set : {
                     card : shops,
                 }
@@ -272,7 +275,7 @@ export const report = async (req,res) => {
         }
 
 
-        res.status(200).json({message : "Added report"});
+        res.status(200).json({status:'ok',message : "Added report"});
     }
     catch(error){
         res.status(400).json({message : "Bad request report"});
@@ -317,17 +320,33 @@ export const deleteCardByEmail = async (req,res) => {
     }
 }
 
+//added
+export const outOfStock = async (req,res) => {
+    console.log(req.body)
+    const userId = req.body.Id
+    const shopId = req.body.sId
+    try{
+        const market = await Prod.find({_id : userId});
+        const shops = market[0].card;
+        const shop = shops.filter(shops => shops._id == shopId);
+        // console.log(shop[0].outOfStock);
+        shop[0].outOfStock = !shop[0].outOfStock;
+        // console.log(shops);
+        try{
+            await Prod.updateOne({ _id : userId }, {
+                $set : {
+                    card : shops,
+                }
+            })
+        }
+        catch(error){
+            res.status(400).json({message : "Bad request outofstock"});
+        }
 
+        res.status(200).json({status:'ok',message : "updated outofstock"});
 
-
-
-
-
-
-
-
-
-
-
-
-
+    }
+    catch(error){
+        res.status(400).json({message: 'Bad request outOfStock'});
+    }
+}

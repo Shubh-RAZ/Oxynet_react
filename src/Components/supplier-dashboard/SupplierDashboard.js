@@ -95,7 +95,7 @@ constructor(props){
 
     handleSubmit = async(event)=>{
         event.preventDefault()
-        const result = await fetch(`http://localhost:5000/oxynet/updateById/`, {
+        const result = await fetch(`https://oxynet.herokuapp.com/oxynet/updateById/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -171,7 +171,7 @@ constructor(props){
     }
 
     delete = async (Id,index) =>{
-        const result = await fetch(`http://localhost:5000/oxynet/deleteCard`, {
+        const result = await fetch(`https://oxynet.herokuapp.com/oxynet/deleteCard`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -227,21 +227,34 @@ constructor(props){
         })
     }
 
-    outOfStock= (Id,index)=>{
+    outOfStock= async(Id,index)=>{
         var render = this.state.render
-        console.log(render[index]);
+        // console.log(render[index]);
         render[index].outOfStock = !render[index].outOfStock
         // send req to backend and if response is ok then allow the further changes
-        this.setState({render:render})
-        if(!render[index].outOfStock){
-            this.handleEdit(index)
+        const result = await fetch(`https://oxynet.herokuapp.com/oxynet/outofstock`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                Id:localStorage.getItem('Id'),
+                sId:Id
+            })
+        }).then((res) => res.json())
+        console.log(result);
+        if(result.status==='ok'){
+            this.setState({render:render})
+            if(!render[index].outOfStock){
+                this.handleEdit(index)
+            }
         }
     }
 
     loadCards=async()=>{
         // alert('hi')
-        // const result = await fetch(`http://localhost:5000/oxynet/getById?Id=6095844af07df40f7cee2df2`, {
-        const result = await fetch(`http://localhost:5000/oxynet/getById?Id=`+localStorage.getItem('Id'), {
+        // const result = await fetch(`https://oxynet.herokuapp.com/oxynet/getById?Id=6095844af07df40f7cee2df2`, {
+        const result = await fetch(`https://oxynet.herokuapp.com/oxynet/getById?Id=`+localStorage.getItem('Id'), {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -267,42 +280,42 @@ constructor(props){
                 {this.state.showform? 
                     <div>
                             <div className="c768" style={{height:'20vh'}}></div>
-                            <form className onSubmit={this.handleSubmit}>
+                            <form onSubmit={this.handleSubmit}>
                                 <div className="form" style={{}}>
                                     <div className="row">
                                     <div className="col-md-6">
-                                        <div className style={{}}>
-                                            <div className style={{padding: '12px'}}>
-                                                <input name="quantity" onChange={this.handleformEdit} defaultValue={this.state.editcard.quantity} type="text" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Quantity (eg. 100 Oxygen Cylinders)" required></input>
+                                        <div style={{}}>
+                                            <div style={{padding: '12px'}}>
+                                                <input name="quantity" onChange={this.handleformEdit} defaultValue={this.state.editcard.quantity} type="text" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Quantity (eg. 100 Oxygen Cylinders)" required></input>
                                             </div>
-                                            <div className style={{padding: '12px'}}>
-                                                 <input name="cost" onChange={this.handleformEdit} defaultValue={this.state.editcard.cost} type="text" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Cost (MRP) per cylinder" required></input>
+                                            <div style={{padding: '12px'}}>
+                                                 <input name="cost" onChange={this.handleformEdit} defaultValue={this.state.editcard.cost} type="text" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Cost (MRP) per cylinder" required></input>
                                             </div>
-                                            <div className style={{padding: '12px'}}>
-                                                <input name="phoneNo1" onChange={this.handleformEdit} defaultValue={this.state.editcard.phoneNo1} type="tel" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="10 digit Phone Number" required></input>
+                                            <div style={{padding: '12px'}}>
+                                                <input name="phoneNo1" onChange={this.handleformEdit} defaultValue={this.state.editcard.phoneNo1} type="tel" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="10 digit Phone Number" required></input>
                                             </div>
-                                            <div className style={{padding: '12px'}}>
-                                                <input name="phoneNo2" onChange={this.handleformEdit} defaultValue={this.state.editcard.phoneNo2} type="tel" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Alternate Phone Number" ></input>
+                                            <div style={{padding: '12px'}}>
+                                                <input name="phoneNo2" onChange={this.handleformEdit} defaultValue={this.state.editcard.phoneNo2} type="tel" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Alternate Phone Number" ></input>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-md-6">
-                                        <div className style={{}}>
-                                        <div className style={{padding: '12px'}}>
-                                            <input name="shopName" onChange={this.handleformEdit} defaultValue={this.state.editcard.shopName} type="text" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Shop Name" required></input>
+                                        <div style={{}}>
+                                        <div style={{padding: '12px'}}>
+                                            <input name="shopName" onChange={this.handleformEdit} defaultValue={this.state.editcard.shopName} type="text" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Shop Name" required></input>
                                         </div>
-                                        <div className style={{padding: '12px'}}>
-                                            <input name="address" onChange={this.handleformEdit} defaultValue={this.state.editcard.address} type="text" className="" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Shop Address" required></input>
+                                        <div style={{padding: '12px'}}>
+                                            <input name="address" onChange={this.handleformEdit} defaultValue={this.state.editcard.address} type="text" style={{borderRadius: '10px', width: '100%', padding: '13px'}}  placeholder="Shop Address" required></input>
                                         </div>
-                                        <div className style={{padding: '12px'}}>
-                                            <select className="" style={{borderRadius: '10px', width: '100%', padding: '13px',border:'1px solid #5A78FD'}}  name="state" id="state" onChange={this.stateChangeHandler} required>
+                                        <div style={{padding: '12px'}}>
+                                            <select style={{borderRadius: '10px', width: '100%', padding: '13px',border:'1px solid #5A78FD'}}  name="state" id="state" onChange={this.stateChangeHandler} required>
                                                 <option disabled selected>Select state</option>
                                                 { states.map((state,index) => {return (this.state.state==state)? <option key={index} name={state} selected>{state}</option> : <option key={index} name={state}>{state}</option>}) }
                                                 {/* {states.map((state,index) => (<option key={index} name={state}>{state}</option>))} */}
                                             </select>
                                         </div>
-                                        <div className style={{padding: '12px'}}>
-                                            <select className="" style={{borderRadius: '10px', width: '100%', padding: '13px',border:'1px solid #5A78FD'}}  name="district" id="district" defaultValue={this.state.disrtict} onChange={this.districtChangeHandler} required>
+                                        <div style={{padding: '12px'}}>
+                                            <select style={{borderRadius: '10px', width: '100%', padding: '13px',border:'1px solid #5A78FD'}}  name="district" id="district" defaultValue={this.state.disrtict} onChange={this.districtChangeHandler} required>
                                                 <option disabled  selected>Select district</option>
                                                 { this.state.districts.map((district,index) => {return (this.state.district==district)? <option key={index} selected>{district}</option>:<option key={index}>{district}</option>}) }
                                             </select>
@@ -338,7 +351,7 @@ constructor(props){
                                         <div className="avail">Availaibility</div>
                                         <div className="avail"><h1>{obj.quantity}</h1></div>
                                         <div style={{'color':'white','fontSize':'15px'}}>Oxygen Cylinders</div>
-                                        <div className="avail">Last updated on: {obj.lastUpdate}</div>
+                                        <div className="avail" style={{fontSize:'16px'}}>Last updated on: {obj.lastUpdate}</div>
                                     </div>
                                 </div>
                                 <div className="rate">Rs . {obj.cost} / Cylinder</div>
@@ -363,13 +376,15 @@ constructor(props){
                                 <div className="service">
                                     <button type="button" className="report-btn" onClick={()=>{this.handledelete(obj._id,index)}} style={{width:'80px'}}>Delete</button>
                                     <div style={{width:'50px'}}></div>
-                                    {(obj.outOfStock)? null :<button type="button" className="report-btn" onClick={()=>{this.handleEdit(index)}} style={{width:'80px',background:'green'}}>Edit</button>}
+                                    {/* {(obj.outOfStock)? null : */}
+                                    <button type="button" className="report-btn" onClick={()=>{this.handleEdit(index)}} style={{width:'80px',background:'green'}}>Edit</button>
+                                    {/* } */}
                                 </div>
                                 <div style={{height:'5px'}}></div>
                                 <font>
                                     Reported by {obj.reportedBy}
                                 </font><br/>
-                                <input type="checkbox" checked={obj.outOfStock} onChange={()=>{this.handleStock(obj.Id,index)}}/>
+                                <input type="checkbox" checked={obj.outOfStock} onChange={()=>{this.handleStock(obj._id,index)}}/>
                                 <label for="vehicle1"> Out of stock</label>
                                 {/* ({obj.reportedBy > 20})? <div>
                                     <div style={{height:'5px'}}></div>

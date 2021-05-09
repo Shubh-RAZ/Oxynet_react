@@ -20,7 +20,7 @@ export default class Fpw extends Component {
         event.preventDefault()
 
 
-        const result = await fetch(`${domain}/api/v1/users/otp/get`, {
+        const result = await fetch(`https://oxynet.herokuapp.com/api/v1/users/api/v1/users/otp/get`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

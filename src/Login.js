@@ -30,7 +30,7 @@ export default class Login extends Component {
     //     console.log(':(')
     //     // if (Items){
     //     //     console.log(':)');
-    //     //     const result = await fetch(`${domain}/api/v1/users/login?`+Items, {
+    //     //     const result = await fetch(`https://oxynet.herokuapp.com/api/v1/users/api/v1/users/login?`+Items, {
     //     //         method: 'GET',
     //     //     }).then((res) => res.json())
     //     //     if (result.status=='ok'){
@@ -43,7 +43,7 @@ export default class Login extends Component {
 
     submit = async (event)=> {
         event.preventDefault()
-        const result = await fetch(`${domain}/api/v1/users/login`, {
+        const result = await fetch(`https://oxynet.herokuapp.com/api/v1/users/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

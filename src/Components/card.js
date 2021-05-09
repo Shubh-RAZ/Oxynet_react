@@ -6,12 +6,33 @@ const cookies = new Cookies();
 
 export default class Card extends Component {
 
-    reporthandler =(event)=>{
+    reporthandler =async(event)=>{
         const Id = this.props.Id
-        console.log(Id);
-        var names = JSON.parse(localStorage.getItem('reported'))
-        // console.log(localStorage.getItem.lastIndexOf(this.props.Id));
-        localStorage.setItem('reported',JSON.stringify(names))
+        var reportedArray= []
+        if(localStorage.getItem('reported')){
+            reportedArray=localStorage.getItem('reported').split(',')
+        }        
+        if(!reportedArray.includes(Id)){
+                const result = await fetch(`https://oxynet.herokuapp.com/oxynet/report`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    Id:this.props.parentId,
+                    sId:this.props.Id
+                })
+            }).then((res) => res.json())
+            if(result.status==='ok'){
+                reportedArray.push(Id)
+                localStorage.setItem('reported',reportedArray)
+                alert('successfully reported')
+            }
+        }else{
+            alert('already report by you')
+        }
+        // console.log(reportedArray)
+        // send report to 
     }
 
     render () {

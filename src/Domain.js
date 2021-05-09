@@ -1,2 +1,2 @@
 let domain;
-export default domain = 'https://oxynet.herokuapp.com'
+export default domain = 'http//localhost:3005'

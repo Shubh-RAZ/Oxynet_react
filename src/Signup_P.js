@@ -24,7 +24,7 @@ export default class Signup_P extends Component {
         event.preventDefault()
         this.setState({disabled:true})
         if (this.state.password==this.state.passwordConfirm){
-            const result = await fetch(`${domain}/api/v1/users/signup/auth`, {
+            const result = await fetch(`https://oxynet.herokuapp.com/api/v1/users/signup/auth`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -41,6 +41,7 @@ export default class Signup_P extends Component {
                 // everythign went fine
                 // console.log('Got the token: ', result.data)
                 localStorage.setItem('token', result.data)
+                localStorage.setItem('Id', result.Id)
                 alert('One time link sent to '+ this.state.email)
             } else {
                 alert(result.error)
